@@ -7,8 +7,8 @@ passport.serializeUser((user, done) => {
   done(null, user.username)
 })
 
-passport.deserializeUser((id, done) => {
-  models.User.findById(id).then((user) => {
+passport.deserializeUser((username, done) => {
+  models.User.findById(username).then((user) => {
     done(null, user)
   }).catch((error) => {
     return done(error, null)
@@ -37,10 +37,8 @@ passport.use(new LocalStrategy({
           }
         });
       }
-      console.log('success')
       return done(null, user);
     }).catch((error) => {
-      console.log(error)
       return done(error)
     })
   }

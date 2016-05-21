@@ -39,3 +39,5 @@ app.use(passport.initialize())
 /* Rutas para los controladores*/
 app.post('/api/user/create', authController.createUser)
 app.post('/api/user/auth', authController.loginUser)
+app.post('/api/user/get', userController.getUser)
+app.post('/api/user/update', userController.updateUser)

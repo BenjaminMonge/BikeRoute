@@ -5,7 +5,7 @@ var LocalStrategy = require('passport-local').Strategy
 var jwt = require('jsonwebtoken');
 
 function createToken(user) {
-  return jwt.sign(user.dataValues, 'iatepie', { expiresIn: 18000 });
+  return jwt.sign({username: user.dataValues.username}, 'iatepie', {algorithm: 'HS256'}, { expiresIn: 18000 });
 }
 
 module.exports.createUser = (req, res) => {
@@ -17,7 +17,6 @@ module.exports.createUser = (req, res) => {
             id_token: createToken(membersaved)
           })
         }).catch(function (error) {
-            console.log(error)
             res.statusCode = 400
             res.send('User already exists')
         })

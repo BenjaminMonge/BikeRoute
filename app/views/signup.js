@@ -8,7 +8,7 @@
             $http.post('api/user/create', $scope.member
           ).then(function successCallback (response) {
                 console.log('Created')
-                $location.path('/home')
+                $location.path('/')
           }, function errorCallback (response) {
                 $location.path('/signup')
           })

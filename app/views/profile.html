@@ -1,23 +1,20 @@
-<div class="bodyhome" ng-init="loadUser()">
+<div ng-init="loadUser()">
+  <input type="username"  ng-model="user.username" class="form-control" >
+  <input type="username"  ng-model="user.email" class="form-control">
+  <input type="username"  ng-model="user.firstname" class="form-control">
+  <input type="username"  ng-model="user.lastname" class="form-control">
+  <input type="username"  ng-model="user.bio" class="form-control">
+  <input type="username"  ng-model="user.joinDate" class="form-control">
+  <input type="username"  ng-model="user.City.cityname" class="form-control">
 
-<div class="site-wrapper">
-
-  <div class="site-wrapper-inner">
-
-    <div class="cover-container">
-      <div class="inner cover">
-        <h1 class="cover-heading">MAP</h1>
-        <p class="lead">Here is displayed the profile information</p>
-      </div>
-
-      <div class="mastfoot">
-        <div class="inner">
-          <p>&copy; 2016 BikeRoutES, Inc. by Benjamín Monge</a>.</p>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</div>
-
+  <button ng-click="updateUser()" type="submit">Sign up</button>
+  You have posted {{events.length}} routes. They are:
+  <ul>
+    <li ng-repeat="event in events">
+      [{{$index + 1}}] {{event.evtname}}  {{event.description}} {{event.UserEvent.created}}
+    </li>
+    <li ng-if="results.length == 0">
+      <strong>No results found...</strong>
+    </li>
+  </ul>
 </div>
