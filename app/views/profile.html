@@ -1,0 +1,20 @@
+<div ng-init="loadUser()">
+  <input type="username"  ng-model="user.username" class="form-control" >
+  <input type="username"  ng-model="user.email" class="form-control">
+  <input type="username"  ng-model="user.firstname" class="form-control">
+  <input type="username"  ng-model="user.lastname" class="form-control">
+  <input type="username"  ng-model="user.bio" class="form-control">
+  <input type="username"  ng-model="user.joinDate" class="form-control">
+  <input type="username"  ng-model="user.City.cityname" class="form-control">
+
+  <button ng-click="updateUser()" type="submit">Sign up</button>
+  You have posted {{events.length}} routes. They are:
+  <ul>
+    <li ng-repeat="event in events">
+      [{{$index + 1}}] {{event.evtname}}  {{event.description}} {{event.UserEvent.created}}
+    </li>
+    <li ng-if="results.length == 0">
+      <strong>No results found...</strong>
+    </li>
+  </ul>
+</div>
