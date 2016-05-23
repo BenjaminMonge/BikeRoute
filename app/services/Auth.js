@@ -1,10 +1,11 @@
-var app = angular.module('BikeRoute')
-
-app.factory('AuthService', ['$location', '$rootScope', 'Session',
-  function ($location, $rootScope, Session) {
-
+angular.module('BikeRoute')
+.factory('Auth',
+  function ($location, $rootScope, Session, User, $cookies) {
+    $rootScope.currentUSer = $cookies.getObject('user') || null
+    $cookies.remove('user')
 
     return {
+      /* Describe el comportamiento para iniciar sesion*/
       login: function(provider, user, callback) {
         var cb = callback || angular.noop;
         Session.save({
@@ -12,15 +13,59 @@ app.factory('AuthService', ['$location', '$rootScope', 'Session',
           username: user.username,
           password: user.password,
           rememberMe: user.rememberMe
-        }, function(response) {
-          var tok = response.id_token
-          localStorage.setItem('jwt', tok);
-          $location.path('/profile/'+tok)
+        }, function(user) {  /* La funcion devuelve el usuario y asigna su informacion*/
+          $rootScope.currentUser = user
           return cb()
         }, function(err) {
           return cb(err.data);
         });
+      },
+/* Usan el servicio usuario para crear y modificar el usuario actual*/
+      createUser: function(userinfo, callback) {
+        var cb = callback || angular.noop;
+        User.save(userinfo,
+          function(user) {
+            $rootScope.currentUser = user;
+            return cb(user.username);
+          },
+          function(err) {
+            return cb(err.data);
+          });
+      },
+
+      currUser: function() {
+        Session.get(function(user) {
+          $rootScope.currentUser = user;
+        });
+      },
+
+      changePassword: function(username, oldPassword, newPassword, callback) {
+        var cb = callback || angular.noop;
+        User.update({
+          username: username,
+          oldPassword: oldPassword,
+          newPassword: newPassword
+        }, function(user) {
+            console.log('password changed');
+            return cb()
+        }, function(err) {
+            return cb(err.data);
+        });
+      },
+
+      removeUser: function(username, password, callback) {
+        var cb = callback || angular.noop
+        User.delete({
+          username: email,
+          password: password
+        }, function(user) {
+            console.log(user + 'removed');
+            return cb();
+        }, function(err) {
+            return cb(err.data);
+        })
       }
+
     }
 
-    }])
+    })

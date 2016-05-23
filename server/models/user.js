@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
         associate: (models) => {
           User.belongsToMany(models.Event, {through: models.UserEvent})
           User.belongsToMany(models.User, {as: 'Friends', through: models.Friendship})
-          User.hasOne(models.City)
+          User.belongsTo(models.City)
         }
       }
     }

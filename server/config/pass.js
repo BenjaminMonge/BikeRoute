@@ -23,6 +23,7 @@ passport.use(new LocalStrategy({
   function(username, password, done) {
     models.User.findById(username).then(function (user) {
       if(!user){
+      console.log('got here');
       console.log('error');
         return done(null, false, {
           'errors': {
@@ -37,6 +38,8 @@ passport.use(new LocalStrategy({
           }
         });
       }
+
+
       return done(null, user);
     }).catch((error) => {
       return done(error)
