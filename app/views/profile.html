@@ -1,24 +1,209 @@
-<div id="wrap" ng-init="loadUser()">
-  <div id="left_col">
-    <form class="form" ng-submit="updateUser(form)" validate>
-      <input ng-model="user.username" class="form-control" >
-      <input ng-model="user.email" class="form-control">
-      <input ng-model="user.firstname" class="form-control">
-      <input ng-model="user.lastname" class="form-control">
-      <input ng-model="user.bio" class="form-control">
-      <input ng-model="user.CityCityname" class="form-control">
-      <button type="submit">Update information</button>
-    </form>
-  </div>
-  <div id="right_col">
-    You have posted {{events.length}} routes. They are:
-    <ul>
-      <li ng-repeat="event in events">
-        [{{$index + 1}}]  {{event.evtname}}  {{event.description}} {{event.UserEvent.created}}
-      </li>
-      <li ng-if="results.length == 0">
-        <strong>No results found...</strong>
-      </li>
-    </ul>
-  </div>
+<!DOCTYPE html>
+
+<html>
+
+
+
+<head lang="es">
+
+    <title>Mi Perfil</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+       <meta charset="utf-8">
+        
+        <link rel="stylesheet" href="css/styles.css">
+         <!-- Material Design Lite -->
+        <script src="https://code.getmdl.io/1.1.3/material.min.js"></script>
+        <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.indigo-pink.min.css">
+        <!-- Material Design icon font -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <title>Mi Perfil</title>
+
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+
+    <link rel="stylesheet" href="assets/css/fonts.css" />
+
+    <link rel="stylesheet" href="assets/css/main.css" />
+
+    <link rel="stylesheet" href="assets/css/responsive.css" />
+     
+    <link rel="stylesheet" href="assets/css/nav_Bar.css" />
+    
+
+
+
+
+  
+  
+</head>
+<body onLoad="initMap();">
+   
+
+<div class="body">
+    <div class="body">
+
+    <header>
+
+        <div class="container">
+            
+
+            <div class="top-container">
+
+                <div class="col-md-3 logo-wrapper">
+
+                    <h2 class="h2Banner"><a href="../Home.html" class="aBanner">BikeRoutES</a></h2>
+
+                    
+
+                </div>
+
+                <div class="col-md-9 lang-banner">
+
+                    <div class="">
+
+                        
+                         
+                           
+
+                    </div>
+
+                </div>
+                <div class="nav">
+
+                    <div class="navbar_wrapper"><br>
+                        <ul>
+                            <li><a href="../Home.html">Inicio</a></li>
+                            <li><a href="../perfil/perfil.html">Crear Ruta</a></li>
+                            <li><a href="../mapea-mi-ruta/CrearRuta.html">Conocenos</a></li>
+                            
+                        </ul>
+
+                        
+                         
+                           
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+    
+
+
+
+    <div class="content">
+ <div class="body">
+            
+        <div class="foto">
+        <!--AQUI VA LA FOTO-->
+        </div>
+        
+        
+        
+        <div class="descripcion">
+            <br>
+            <!--ES EL INPUT PARA EL NOMBRE-->
+        <center><input class="nombre" type="text" ></center>
+            <p>--------------------------------------------------------------------------------</p>
+            <!--ES EL TEXTAREA PARA METER LA DESCRIPCION-->
+            <center><textarea class="Textarea"></textarea></center>
+     </div>
+        
+        
+        
+        <div class="mapa">
+            <div id="map">
+                <!--AQUI VA EL MAPA-->
+            </div>
+        </div>
+        
+        
+        
+        
+        
+        <div class="rutas">
+            <!-- ESTAS SON LAS CARDS -->
+                <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+                    <div class="mdl-card__title">
+                        <h2 class="mdl-card__title-text">Ruta</h2>
+                    </div>
+                    <div class="mdl-card__supporting-text">
+                        Descripcion de la ruta: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Mauris sagittis pellentesque lacus eleifend lacinia...
+                    </div>
+                    <div class="mdl-card__actions mdl-card--border">
+                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                            Ver Ruta
+                        </a>
+                    </div>
+                    <div class="mdl-card__menu">
+                        <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                            <i class="material-icons">share</i>
+                        </button>
+                    </div>
+            </div>
+            
+            
+            <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+                    <div class="mdl-card__title">
+                        <h2 class="mdl-card__title-text">Ruta</h2>
+                    </div>
+                    <div class="mdl-card__supporting-text">
+                        Descripcion de la ruta: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Mauris sagittis pellentesque lacus eleifend lacinia...
+                    </div>
+                    <div class="mdl-card__actions mdl-card--border">
+                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                            Ver Ruta
+                        </a>
+                    </div>
+                    <div class="mdl-card__menu">
+                        <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                            <i class="material-icons">share</i>
+                        </button>
+                    </div>
+            </div>
+            
+            
+            <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+                    <div class="mdl-card__title">
+                        <h2 class="mdl-card__title-text">Ruta</h2>
+                    </div>
+                    <div class="mdl-card__supporting-text">
+                        Descripcion de la ruta: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Mauris sagittis pellentesque lacus eleifend lacinia...
+                    </div>
+                    <div class="mdl-card__actions mdl-card--border">
+                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                            Ver Ruta
+                        </a>
+                    </div>
+                    <div class="mdl-card__menu">
+                        <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                            <i class="material-icons">share</i>
+                        </button>
+                    </div>
+            </div>
+        
+        </div>
+     <!--AQUI TERMINAN LAS CARDS-->
+    </div>
+       
+
+    </div>
+
+
+    
 </div>
+    </div>
+  
+
+</body>
+
+
+</html>
