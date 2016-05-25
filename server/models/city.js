@@ -1,12 +1,8 @@
 module.exports = (sequelize, DataTypes) => {
   var City = sequelize.define('City', {
-    cityname: DataTypes.STRING,
-    coordinates: DataTypes.STRING
-  },
-  {
-    classMethods: (models) => {
-      City.hasMany(models.Event)
-    }
+    cityname: {type: DataTypes.STRING, primaryKey: true},
+    coordinates: DataTypes.STRING,
+    image: DataTypes.STRING
   }
 )
 

@@ -1,25 +1,28 @@
 var routeProvider
-(() => {
-  angular.module('BikeRoute', ['ngRoute', 'ngResource', 'http-auth-interceptor', 'ngAnimate'])
+angular.module('BikeRoute', ['ngRoute', 'ngResource', 'http-auth-interceptor',
+'ngAnimate', 'ngCookies', 'ngMap'])
   .config(($routeProvider, $locationProvider) => {
+
 
     $routeProvider
     .when('/', {templateUrl: 'app/views/home.html', controller: 'HomeController'})
     .when('/signup', {templateUrl: 'app/views/signup.html', controller: 'SignupController'})
-    .when('/profile/:prof_id', {templateUrl: 'app/views/profile.html', controller: 'ProfileController'})
-    .when('/myprofile', {templateUrl: function(params){ return 'app/views/profile.html'; }, controller: 'ProfileController'})
-    .when('/bikevt/:evt_id', {templateUrl: function(params){ return 'app/views/bikevt.html'; }, controller: 'BikevtController'})
+    .when('/profile/:username', {templateUrl: 'app/views/profile.html', controller: 'ProfileController'})
+    .when('/event/:eventid', {templateUrl: 'app/views/event.html', controller: 'EventController'})
     .otherwise({redirectTo: '/'})
 
   })
 
-  .run(['$rootScope' ,'$location', function ($rootScope, $location) {
-    $rootScope.$watch(function() { return $location.path(); }, function(newValue, oldValue){
-    if (!localStorage.getItem('jwt') && (['' ,'/', '/signup'].indexOf(newValue) == -1)){
-            $location.path('/signup');
+  .run(['$rootScope' ,'$location', 'Auth', function ($rootScope, $location, Auth) {
+    $rootScope.$watch('currentUser', function (currentUser) {
+    if (!currentUser && (['' ,'/', '/signup'].indexOf($location.path()) == -1)){
+        Auth.currUser()
     }
-});
+  });
+
+  $rootScope.$on('event:auth-loginRequired', function() {
+      $location.path('/');
+      return false;
+    });
 
     }])
-
-})()

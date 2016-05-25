@@ -1,0 +1,91 @@
+body{
+   
+}
+
+.foto{
+    background-image: url(img/perfil.jpg);
+    background-repeat: no-repeat;
+    margin-top:65px; 
+    width: 242px;
+    height: 280vh;
+    position: fixed;
+    float: left;
+}
+.descripcion{
+    float: left;
+    background: darkslategrey;
+    margin-top: 240px;
+     width: 242px;
+    height: 59vh;
+    position: fixed;
+}
+.nombre{
+    color: chocolate;
+    font-family: fantasy;
+    text-shadow: 2px 2px 1px #000;
+    font-size: 25px;
+    width: 200px;
+    text-align: center;
+    box-shadow: none;
+    border: none;
+    background-color:darkslategray; 
+}
+
+.Textarea{
+     color: white;
+    font-family: sans-serif;
+    text-shadow: 1px 1px 0px #000;
+    font-size: 15px;
+    width: 200px;
+    height: 42vh;
+    text-align: left;
+    box-shadow: none;
+    border: none;
+    background-color:darkslategray;
+}
+.descripcion p{
+    color: white;
+    font-size: 10px;
+    font-family:sans-serif;
+   
+}
+.mapa{
+    position: fixed;
+    margin-left: 245px; 
+    float: right;
+    margin-top:90px;
+    width: 550px;
+    height: 98vh;
+    top: 0;
+    
+}
+.rutas{
+   
+    float: right;
+    margin-top: 50px;
+    background: cadetblue;
+    width: 210px;
+    height: 98vh;
+}
+
+.demo-card-wide.mdl-card {
+  width: 512px;
+}
+.demo-card-wide > .mdl-card__title {
+  color: #fff;
+  height: 176px;
+  background: url('img/ruta.jpg') center / cover;
+}
+.demo-card-wide > .mdl-card__menu {
+  color: #fff;
+}
+
+body {
+  
+  background: #fafafa;
+  position: absolute;
+}
+#map{
+    height: 100%;
+    width: 550px;
+}

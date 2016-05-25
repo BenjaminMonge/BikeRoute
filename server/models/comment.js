@@ -3,9 +3,17 @@
 module.exports = (sequelize, DataTypes) => {
   var Comment = sequelize.define('Comment', {
     content: DataTypes.STRING,
-    datePosted: DataTypes.DATE,
-    rates: DataTypes.INTEGER
-  })
+    datePosted: DataTypes.DATE
+  },{
+    classMethods: {
+      associate: (models) => {
+        Comment.belongsTo(models.User)
+        Comment.belongsTo(models.Event)
+      }
+    }
+  }
+
+  )
 
   return Comment
 }

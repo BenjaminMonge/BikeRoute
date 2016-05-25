@@ -1,0 +1,244 @@
+@import url(http://fonts.googleapis.com/css?family=Raleway:400,200,500,700);
+
+/* reset --------------------------  */
+
+html,
+body,
+div,
+ul,
+ol,
+li,
+dl,
+dt,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+form,
+dfn,
+del,
+p,
+blockquote,
+fieldset,
+input,
+textarea,
+select,
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+nav,
+section,
+button,
+canvas,
+video {
+    margin: 0;
+    padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+address,
+caption,
+cite,
+code,
+th,
+dfn,
+del {
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
+
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+button {
+    cursor: pointer
+}
+
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+button,
+input[type="search"],
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+textarea {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+}
+
+input,
+button,
+textarea {
+    line-height: normal;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+
+
+
+
+input[type="hidden"],
+[hidden],
+.hidden {
+    display: none
+}
+
+
+/* tools --------------------------  */
+
+.clearfix:after,
+.wrap:after,
+.text:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+    font-size: 0;
+}
+
+
+
+/* common --------------------------  */
+
+
+
+html {
+    height: 100%;
+    background: white;
+}
+
+body {
+    height: 100%;
+    font: 16px/28px "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #222222;
+    -webkit-font-smoothing: antialiased;
+    -webkit-backface-visibility: hidden;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+.main {
+    min-height: 100%;
+    overflow: hidden;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.wrap {
+    margin: 0 auto;
+    padding: 0 15px;
+    max-width: 1140px;
+}
+
+a {
+    color: #10bbf1;
+    cursor: pointer;
+    background: transparent;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #40c9f4
+}
+
+a:active {
+    color: #0b97c3
+}
+.textarea {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
+}
+
+
+
+
+/* header --------------------------  */
+header {
+    padding: 104px 0;
+    background: url(../imag/fondo32.jpg) no-repeat 50% 50%;
+    font: 24px/36px "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: white;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.header-wrapper {
+    padding-top: 50px;
+    max-width: 655px;
+}
+/*Formularios*/
+form{
+   float: center;
+    margin-top: 50px;
+   margin-left: 60px; 
+   
+    width:75%;
+    /*max-width: 250px;*/
+    background: rgba(0,0,0,0.7);
+    padding: 30px;
+    border: 1px solid rgba(0,0,0,0.8)
+        
+}
+h2{
+    text-align: center;
+    margin-bottom: 20px;
+}
+input{
+    display: block;
+    padding: 10px;
+    width: 80%;
+    margin: 30px 0;
+    margin-left: 60px;
+
+
+    font-size: 20px;
+}
+input[type="submit"]{
+    background: linear-gradient(#ffda63,#ffb940);
+    border: 0;
+    color: saddlebrown;
+    opacity: 0.8;
+    width: 40%;
+    cursor: pointer;
+    border-radius:8px;
+    margin-bottom: 25px;
+    margin-left: 230px;
+
+}
+input[type="submit"]:hover{
+    opacity: 0.6;
+}
+
+
+
+ 
+
