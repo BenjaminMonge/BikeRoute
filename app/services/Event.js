@@ -1,9 +1,9 @@
 angular.module('BikeRoute')
-.factory('Edata', function ($resource) {
+.factory('Event', function ($resource) {
   return $resource('/api/event/:eventid', {
       eventid: 'eventid'
   }, {
-    'update': {
+    update: {
       method: 'PUT'
     }
   });

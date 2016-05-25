@@ -3,11 +3,6 @@ module.exports = (sequelize, DataTypes) => {
     cityname: {type: DataTypes.STRING, primaryKey: true},
     coordinates: DataTypes.STRING,
     image: DataTypes.STRING
-  },
-  {
-    classMethods: (models) => {
-
-    }
   }
 )
 

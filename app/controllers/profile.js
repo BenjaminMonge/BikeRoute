@@ -1,24 +1,24 @@
 angular.module('BikeRoute')
 .controller('ProfileController',
-  function($scope, Udata, $location, $routeParams) {
+  function($scope, User, $location, $routeParams, $rootScope) {
 
-      $scope.loadUser = function () {
-        Udata.get({
-          username: $routeParams.username
-        }, function (response) {
-          $scope.user = response.user
-          $scope.events = response.events
-          console.log(response.events);
-        })
-      }
+    $scope.loadUser = function () {
+       User.get({
+         username: $routeParams.username
+       }, function (response) {
+         console.log(response);
+         $scope.user = response.user
+         $scope.events = response.events
+         console.log(response.events);
+       })
+     }
 
       $scope.updateUser = function () {
         delete $scope.user.joinDate
-        var data = $scope.user
-        data.$update(function () {
-          $location.path('/profile/' + data.username)
+        var user = $scope.user
+        User.update(user, function () { /* En lugar de redirigir hay que intentar traer la informacion y renderizarla utilizando scope*/
+          $location.path('/profile/' + user.username)
         })
-
       }
 
   })

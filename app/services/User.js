@@ -1,9 +1,6 @@
 angular.module('BikeRoute')
   .factory('User', function ($resource) {
-    return $resource('/auth/users/:username/', {},
-      {
-        'update': {
-          method:'PUT'
-        }
-      });
-  });
+    return $resource('/api/user/:username',
+    {username: 'username'},
+    {update: {method: 'PUT'}})
+  })

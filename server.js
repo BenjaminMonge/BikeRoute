@@ -10,6 +10,7 @@ var session = require('./server/controllers/auth')
 var auth = require('./server/config/auth')
 var users = require('./server/controllers/user')
 var events = require('./server/controllers/event')
+var comments = require('./server/controllers/comment')
 /* definiendo la ruta base de la aplicacion web*/
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '/index.html'))
@@ -34,8 +35,9 @@ models.sequelize.sync().then(function () {
 
 )*/
 app.use(bodyParser.json())
+/* COnfiguracion para la autenticacion de passport*/
 var pass = require('./server/config/pass')
-/* Usando la sesion de passport para validar*/
+/* Usando la sesion de passport para validar y mantener sesiones en el servidor*/
 app.use(xpsession({
   secret: 'iatepie',
   resave: true,
@@ -44,12 +46,18 @@ app.use(xpsession({
 }))
 app.use(passport.initialize())
 app.use(passport.session())
-
 /* Rutas para los controladores*/
+/* Autenticacion y mantenimiento de sesion*/
 app.get('/auth/session', auth.ensureAuthenticated, session.session)
 app.post('/auth/session', session.login)
 app.delete('/auth/session', session.logout)
-app.post('/auth/users', users.create)
+/*CRUD del usuario existente en el sistema*/
+app.post('/api/user/:username', users.create)
 app.get('/api/user/:username', users.get)
 app.put('/api/user/:username', auth.canEdit, users.update)
+/* CRD y funcionalidad del evento*/
+app.post('/api/event/:eventid', events.create)
 app.get('/api/event/:eventid', events.get)
+app.put('/api/event/:eventid', events.participate)
+/* CUD para los comentarios*/
+app.post('/api/comment/', comments.create)

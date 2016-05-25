@@ -21,20 +21,31 @@ module.exports.create = (req, res) => {
 }
 
 module.exports.get = (req, res) => {
+  console.log('got here');
   models.User.findById(req.params.username).then((userfound) => {
     userfound.getEvents().then((evf) => {
       var evs = {}
-      delete evf[0].dataValues.UserEvent
-      evs[0] = evf[0].dataValues
-      for (var i = 1; i < evf.length; i++) {
-        delete evf[i].dataValues.UserEvent
-        evs[i] = evf[i].dataValues
+      if(evf.length > 0){
+        delete evf[0].dataValues.UserEvent
+        evs[0] = evf[0].dataValues
+        for (var i = 1; i < evf.length; i++) {
+          delete evf[i].dataValues.UserEvent
+          evs[i] = evf[i].dataValues
+        }
+      } else {
+        evs[0] = {
+          eventid: 0,
+          evtname: 'NULL',
+          description: 'You havent participated in any events'
+        }
       }
+
       response = {
         user: userfound.dataValues,
         events: evs
       }
       res.status(200).send(response)
+
     })
   }).catch((error) => {
     res.status(500)
@@ -49,8 +60,4 @@ module.exports.update = (req, res) => {
     }).catch((error) => {
       res.status(500).send(error)
     })
-}
-
-module.exports.comment = (req, res) => {
-  models.UserEvent.build(req.body).save()
 }

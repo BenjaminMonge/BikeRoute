@@ -1,20 +1,36 @@
-<div ng-init="loadEvent()">
-<div map-lazy-load="https://maps.google.com/maps/api/js">
-  <div ng-controller="MapController as vm" ng-init="vm.loadRoute()">
-    <div>
-      <input class="button-download-title" ng-click="vm.saveRoute()" type=button value="Save">
-      <input class="button-download-title" ng-click="vm.deleteMarkers()" type=button value="Delete previous">
-    </div>
-    <ng-map zoom="14" center="13.692505, -89.218601" on-click="vm.addMarkerAndPath()">
-    <marker ng-repeat="pos in vm.positions" position="{{pos}}"></marker>
-    <shape name="polyline" id="foo"
-      path="{{vm.path}}"
-      stroke-color="#FF0000"
-      stroke-opacity="1.0"
-      stroke-weight="3">
-    </shape>
-  </ng-map>
-  </div>
-</div>
+  <div class="bodysignup">
+    <form  name="form"
+           ng-submit="createEvent(form)"
+           validate>
+      <h2 class="form-signup-heading">Create a bikeroute event</h2>
 
-</div>
+      <label class="sr-only">Nombre</label>
+      <input type="username"  ng-model="bikeevent.evtname" class="form-control">
+
+      <label class="sr-only">Descripcion</label>
+      <input type="email" ng-model="bikeevent.description" class="form-control" >
+
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Create</button>
+    </form>
+  </div>
+
+
+  <div ng-init=loadEvent()>
+    <div map-lazy-load="https://maps.google.com/maps/api/js">
+      <div ng-init="vm.loadRoute()">
+        <div>
+          <input class="button-download-title" ng-click="vm.saveRoute()" type=button value="Save">
+          <input class="button-download-title" ng-click="vm.deleteMarkers()" type=button value="Delete previous">
+        </div>
+        <ng-map zoom="14" center="13.692505, -89.218601" on-click="vm.addMarkerAndPath()">
+        <marker ng-repeat="pos in vm.positions" position="{{pos}}"></marker>
+        <shape name="polyline" id="foo"
+          path="{{vm.path}}"
+          stroke-color="#FF0000"
+          stroke-opacity="1.0"
+          stroke-weight="3">
+        </shape>
+      </ng-map>
+      </div>
+    </div>
+  </div>
