@@ -6,12 +6,6 @@ var passport = require('passport')
 var models = require('./server/models')
 var xpsession = require('express-session')
 
-/* definiendo la ruta base de la aplicacion web*/
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '/index.html'))
-})
-/* Router de express usado*/
-var routes = require('./server/config/router')(app);
 /*  Definiendo las rutas que utilizan los componentes de Angular
 para obtener archivos presentes en el servidor*/
 app.use('/app', express.static(__dirname + '/app'))
@@ -35,5 +29,13 @@ app.use(xpsession({
   saveUninitialized: true,
   cookie: { maxAge: 600000, secure: false }
 }))
+
 app.use(passport.initialize())
 app.use(passport.session())
+
+/* definiendo la ruta base de la aplicacion web*/
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '/index.html'))
+})
+/* Router de express usado*/
+var routes = require('./server/config/router')(app);
