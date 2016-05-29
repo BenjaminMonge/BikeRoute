@@ -1,7 +1,7 @@
 var models = require('../models');
 
 
-exports.create = (req, res) => {
+module.exports.create = (req, res) => {
   models.findById(req.params.eventid).then((eventfound) => {
     var comm = req.params.comment
     eventfound.addComments([comm], {UserUsername: req.user.username}).success(()=> {
@@ -10,7 +10,7 @@ exports.create = (req, res) => {
   })
 }
 
-exports.edit = (req, res) => {
+module.exports.edit = (req, res) => {
   newcomm = req.params.comment
   models.findById(newcomm.id).then((comm) => {
     comm.updateAttributes({content: newcomm.content}).then(() => {
@@ -19,7 +19,7 @@ exports.edit = (req, res) => {
   })
 }
 
-exports.delete = (req, res) => {
+module.exports.delete = (req, res) => {
   var commid = req.params.commid
   models.findById(commid).then((comm) => {
     comm.delete().then((rows) => {
