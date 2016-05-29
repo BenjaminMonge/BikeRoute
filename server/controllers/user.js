@@ -2,7 +2,7 @@ var models = require('../models')
 var bcrypt = require('bcryptjs')
 
 
-module.exports.create = (req, res) => {
+exports.create = (req, res) => {
     bcrypt.genSalt(10, function(err, salt) {
     bcrypt.hash(req.body.password, salt, function(err, hash) {
         req.body.password= hash;
@@ -20,7 +20,7 @@ module.exports.create = (req, res) => {
   })
 }
 
-module.exports.get = (req, res) => {
+exports.get = (req, res) => {
   console.log('got here');
   models.User.findById(req.params.username).then((userfound) => {
     userfound.getEvents().then((evf) => {
@@ -52,7 +52,7 @@ module.exports.get = (req, res) => {
   })
 }
 
-module.exports.update = (req, res) => {
+exports.update = (req, res) => {
     models.User.findById(req.user.username, {include: [models.City]}).then((userfound) => {
       userfound.update(req.body).then(() => {
         res.json(userfound)
