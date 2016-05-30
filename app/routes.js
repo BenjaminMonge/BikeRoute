@@ -1,6 +1,6 @@
 var routeProvider
 angular.module('BikeRoute', ['ngRoute', 'ngResource', 'http-auth-interceptor',
-'ngAnimate', 'ngCookies', 'ngMap'])
+'ngAnimate', 'ngCookies', 'ngMap', 'ngFileUpload'])
   .config(($routeProvider, $locationProvider) => {
 
 
@@ -15,6 +15,7 @@ angular.module('BikeRoute', ['ngRoute', 'ngResource', 'http-auth-interceptor',
 
   .run(['$rootScope' ,'$location', 'Auth', function ($rootScope, $location, Auth) {
     $rootScope.$watch('currentUser', function (currentUser) {
+     console.log(currentUser);
     if (!currentUser && (['' ,'/', '/signup'].indexOf($location.path()) == -1)){
         Auth.currUser()
     }
