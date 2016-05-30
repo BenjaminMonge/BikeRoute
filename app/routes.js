@@ -1,6 +1,6 @@
 var routeProvider
 angular.module('BikeRoute', ['ngRoute', 'ngResource', 'http-auth-interceptor',
-'ngAnimate', 'ngCookies', 'ngMap'])
+'ngAnimate', 'ngCookies', 'ngMap', 'ngFileUpload'])
   .config(($routeProvider, $locationProvider) => {
 
 
