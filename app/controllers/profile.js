@@ -1,6 +1,6 @@
 angular.module('BikeRoute')
 .controller('ProfileController',
-  function($scope, User, $location, $routeParams, $rootScope, Upload) {
+  function($scope, User, $location, $routeParams, $rootScope) {
 
     $scope.loadUser = function () {
        User.get({

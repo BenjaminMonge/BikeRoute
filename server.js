@@ -4,6 +4,7 @@ var path = require('path')
 var bodyParser = require('body-parser')
 var passport = require('passport')
 var session = require('express-session')
+var models = require('./server/models');
 
 /*  Definiendo las rutas que utilizan los componentes de Angular
 para obtener archivos presentes en el servidor*/
