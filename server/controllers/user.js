@@ -53,6 +53,7 @@ module.exports.get = (req, res) => {
 }
 
 module.exports.update = (req, res) => {
+  req.body.image = req.file.path
     models.User.findById(req.user.username, {include: [models.City]}).then((userfound) => {
       userfound.update(req.body).then(() => {
         res.json(userfound)
