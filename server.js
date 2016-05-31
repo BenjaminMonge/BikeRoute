@@ -1,7 +1,6 @@
 var express = require('express')
 var app = express()
 var path = require('path')
-var bodyParser = require('body-parser')
 var passport = require('passport')
 var session = require('express-session')
 var models = require('./server/models');
@@ -10,10 +9,7 @@ var models = require('./server/models');
 para obtener archivos presentes en el servidor*/
 app.use('/app', express.static(__dirname + '/app'))
 app.use('/node_modules', express.static(__dirname + '/node_modules'))
-
-/* Para obtener json apartir de requests al servidor*/
-app.use(bodyParser.json())
-
+app.use('/uploads', express.static(__dirname + "/uploads"));
 /* Inicializando el servidor y sincronizando la base de datos*/
 models.sequelize.sync().then(function () {
   app.listen(3000, () => {

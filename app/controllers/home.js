@@ -2,7 +2,7 @@ angular.module('BikeRoute')
   .controller('HomeController',
     function($scope, Auth, $location) {
 
-        $scope.login = function(form) {
+        $scope.login = function() {
           Auth.login('password', {
          'username': $scope.user.username,
          'password': $scope.user.password

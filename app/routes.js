@@ -13,6 +13,34 @@ angular.module('BikeRoute', ['ngRoute', 'ngResource', 'http-auth-interceptor',
 
   })
 
+  .directive('customFileInput', function() {
+  return {
+    restrict: 'EA',
+    require: 'ngModel',
+    link: function(scope, element, attrs, ngModelCtrl) {
+      var fileInput = element[0].querySelector('input[type=file]');
+
+      fileInput.addEventListener('change', handleFileInput);
+
+      scope.$on('$destroy', function() {
+        fileInput.removeEventListener('change', handleFileInput);
+      });
+
+      function handleFileInput(evt) {
+        if (!this.files || !this.files[0]) { return; }
+
+        var loadedFile = this.files[0];
+
+        scope.$apply(function() {
+          ngModelCtrl.$setViewValue(loadedFile);
+        });
+
+      }
+
+    }
+  };
+})
+
   .run(['$rootScope' ,'$location', 'Auth', function ($rootScope, $location, Auth) {
     $rootScope.$watch('currentUser', function (currentUser) {
     if (!currentUser && (['' ,'/', '/signup'].indexOf($location.path()) == -1)){
