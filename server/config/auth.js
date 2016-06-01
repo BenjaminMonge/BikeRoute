@@ -6,8 +6,7 @@ if(req.isAuthenticated()) {return next()}
 }
 
 module.exports.canEdit = function canEdit(req, res, next) {
-  console.log(req);
-  if(req.body.username == req.user.username){
+  if (req.body.username == req.user.username) {
     return next()
   }
   res.status(403).send('Not authorized')

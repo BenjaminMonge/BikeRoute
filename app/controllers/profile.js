@@ -20,24 +20,10 @@ angular.module('BikeRoute')
             fd.append(key, data[key]);
         }
 
-       User.update({}, fd).$promise.then(function (res) {
-         console.log(res);
-         $location.path('/profile/' + data.username)
-       })
-     }
+        User.update({}, fd).$promise.then(function (res) {
+          console.log(res);
+          $scope.user = res
 
-      /*$scope.updateUser = function (file) {
-        delete $scope.user.joinDate
-        data = {
-          user: $scope.user,
-          file: file
-        }
-        User.update(user, function () {
-          $location.path('/profile/' + user.username)
         })
-      }*/
-
-
-
-
+      }
   })
