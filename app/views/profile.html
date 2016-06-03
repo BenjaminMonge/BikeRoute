@@ -1,97 +1,23 @@
 <!DOCTYPE html>
 
 <html>
-
-
-
 <head lang="es">
 
     <title>Mi Perfil</title>
 
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html"/>
 
        <meta charset="utf-8">
-        
-        <link rel="stylesheet" href="../css/profile/styles.css">
-         <!-- Material Design Lite -->
-        <script src="https://code.getmdl.io/1.1.3/material.min.js"></script>
-        <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.indigo-pink.min.css">
-        <!-- Material Design icon font -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-        <title>Mi Perfil</title>
 
-    <link rel="stylesheet" href="../css/profile/bootstrap.min.css" />
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
 
-    <link rel="stylesheet" href="../css/profile/fonts.css" />
-
-    <link rel="stylesheet" href="../css/profile/main.css" />
-
-    <link rel="stylesheet" href="../css/profile/responsive.css" />
-     
-    
-  
+    <link rel="stylesheet" href="../css/profile/main.css" /> 
 </head>
 <body>
    
 
 <div class="body">
-<<<<<<< HEAD
-    <div class="body"> 
-=======
-    <div class="body">
 
-    <header>
-
-        <div class="container">
-            
-
-            <div class="top-container">
-
-                <div class="col-md-3 logo-wrapper">
-
-                    <h2 class="h2Banner"><a href="home.html" class="aBanner">BikeRoutES</a></h2>
-
-                    
-
-                </div>
-
-                <div class="col-md-9 lang-banner">
-
-                    <div class="">
-
-                        
-                         
-                           
-
-                    </div>
-
-                </div>
-                <div class="nav">
-
-                    <div class="navbar_wrapper"><br>
-                        <ul>
-                            <li><a href="home.html">Inicio</a></li>
-                            <li><a href="profile.html.">Crear Ruta</a></li>
-                            <li><a href="eventcreate.html">Conocenos</a></li>
-                            
-                        </ul>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </header>
-    
-
->>>>>>> refs/remotes/origin/master
-
-
-    <div class="content">
-        <div class="body">
             
         <div class="foto">
         <!--AQUI VA LA FOTO-->
@@ -100,11 +26,38 @@
         
         
         <div class="descripcion">
+            <button class="btnEditarPerfil">Editar Perfil</button>
+            
             <br>
+            
+            
+            <label class="label">Usuario:</label>
+            <!--ES EL INPUT PARA EL USUARIO-->
+        <center><input class="datos" type="text" ></center>
+           <hr>
+             <label class="label">Email:</label>
+            <!--ES EL INPUT PARA EL EMAIL-->
+        <center><input class="datos" type="text" ></center>
+            
+            
+             <label class="label">Nombre:</label>
             <!--ES EL INPUT PARA EL NOMBRE-->
-        <center><input class="nombre" type="text" ></center>
-            <p>--------------------------------------------------------------------------------</p>
-            <!--ES EL TEXTAREA PARA METER LA DESCRIPCION-->
+        <center><input class="datos" type="text" ></center>
+            
+            
+             <label class="label">Fecha de Ingreso: </label>
+            <!--ES EL INPUT PARA   LA FECHA DE INGRESO-->
+        <center><input class="datos" type="text" ></center>
+            
+            
+            
+            <label class="label">Ciudad:</label>
+            <!--ES EL INPUT PARA LA CIUDAD-->
+        <center><input class="datos" type="text" ></center>
+            
+            
+            <!--ES EL TEXTAREA PARA LA DESCRIPCION-->
+            <label class="label">Descripcion</label>
             <center><textarea class="Textarea"></textarea></center>
      </div>
         
@@ -119,84 +72,24 @@
         
         
         
-        
+       <!--ESTAS SON LAS RUTAS--> 
         <div class="rutas">
+            <h2>RUTAS</h2>
             <!-- ESTAS SON LAS CARDS -->
-                <div class="demo-card-wide mdl-card mdl-shadow--2dp">
-                    <div class="mdl-card__title">
-                        <h2 class="mdl-card__title-text">Ruta</h2>
+                <div class="cards">
+                    <div class="fotoRuta">
+                        
+                       <!--Aqui va el titulo de la RUTA-->
+                        <input class="titulo" type="text">
+                    
+                    <!-- Aqui iria la imagen de la ruta-->
                     </div>
-                    <div class="mdl-card__supporting-text">
-                        Descripcion de la ruta: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Mauris sagittis pellentesque lacus eleifend lacinia...
-                    </div>
-                    <div class="mdl-card__actions mdl-card--border">
-                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-                            Ver Ruta
-                        </a>
-                    </div>
-                    <div class="mdl-card__menu">
-                        <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-                            <i class="material-icons">share</i>
-                        </button>
-                    </div>
+                   <hr/>
             </div>
-            
-            
-            <div class="demo-card-wide mdl-card mdl-shadow--2dp">
-                    <div class="mdl-card__title">
-                        <h2 class="mdl-card__title-text">Ruta</h2>
-                    </div>
-                    <div class="mdl-card__supporting-text">
-                        Descripcion de la ruta: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Mauris sagittis pellentesque lacus eleifend lacinia...
-                    </div>
-                    <div class="mdl-card__actions mdl-card--border">
-                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-                            Ver Ruta
-                        </a>
-                    </div>
-                    <div class="mdl-card__menu">
-                        <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-                            <i class="material-icons">share</i>
-                        </button>
-                    </div>
-            </div>
-            
-            
-            <div class="demo-card-wide mdl-card mdl-shadow--2dp">
-                    <div class="mdl-card__title">
-                        <h2 class="mdl-card__title-text">Ruta</h2>
-                    </div>
-                    <div class="mdl-card__supporting-text">
-                        Descripcion de la ruta: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Mauris sagittis pellentesque lacus eleifend lacinia...
-                    </div>
-                    <div class="mdl-card__actions mdl-card--border">
-                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-                            Ver Ruta
-                        </a>
-                    </div>
-                    <div class="mdl-card__menu">
-                        <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-                            <i class="material-icons">share</i>
-                        </button>
-                    </div>
-            </div>
-        
         </div>
      <!--AQUI TERMINAN LAS CARDS-->
     </div>
-       
-
-    </div>
-
-
     
-</div>
-    </div>
-  
-
 </body>
 
 

@@ -1,13 +1,16 @@
 form{
    float: right;
-    margin-top: 50px;
+    margin-top: 90px;
     margin-left: 40px;
     width:30%;
-    max-width: 250px;
-    background: rgba(0,0,0,0.7);
+    max-width: 350px;
+    background: rgba(0,0,0,0.8);
     padding: 30px;
     border: 1px solid rgba(0,0,0,0.8)
         
+}
+.login{
+    width: 600px;
 }
 h2{
     text-align: center;

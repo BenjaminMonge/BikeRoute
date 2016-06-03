@@ -32,7 +32,7 @@
 a.popup-cerrar {
     margin-top: 100px;
     margin-bottom: 100px;
-    margin-right: 200px;
+    margin-right: 500px;
     margin-left: 80px;
    position: absolute;
    top:3px;
@@ -47,7 +47,7 @@ a.popup-cerrar {
 .formModal{
    margin-top: 100px;
     margin-bottom: 100px;
-    margin-right: 200px;
+    margin-right: 500px;
     margin-left: 80px;
     width: 500vh;
     height: 70vh;

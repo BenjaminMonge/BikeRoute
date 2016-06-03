@@ -6,6 +6,7 @@ body {
 }
 .body{
     background-image: url(img/fondo32.jpg);
+    margin-top: 70px;
 }
 h1, h2, h3, h4, h5 {
     color: #f2620b;
@@ -13,34 +14,10 @@ h1, h2, h3, h4, h5 {
 a, a:hover, a:focus {
     outline: 0;
 }
-.h2Banner{
-    font-size: 50px;
-    color: #fff;
-    text-align: left;
-    width: 100%;
-    font-family: fantasy;
-    
-}
-.aBanner{
-    color: coral;
-    
-}
-.aBanner:link{
-    text-decoration: none;
-}
-.aBanner:hover{
-    color: cadetblue;
-    text-shadow: -2px -2px 1px #fff;
-    
-}
-.descriptionCrearRuta{
-    margin-top: 90px;
-    text-align: justify;
-    color: #fff;
-    text-shadow: 2px 2px 1px #000;
-    
-}
+
+
 .parrafo{
+    color: white;
     margin-left: 50px;
     width: 300px;
     font-size: 20px;
@@ -49,38 +26,6 @@ a, a:hover, a:focus {
     background: rgba(0,0,0,0.8);
     padding: 15px;
         
-}
-.descripcion{
-    
-}
-header {
-    /*background-color: rgba(0,0,0,1);*/
-    /*background-image: url("img/banner.jpg");*/
-    background-size:100% 100%;
-    width: 100%;
-    
-    background-size:100% 100%; 
-    border-bottom: 0px solid #dddddd;
-    border-right: 0px solid #dddddd;
-    border-left: 0px solid #dddddd;
-}
-header  .container {
-    position: fixed;
-    z-index: 1000;
-    top:0;
-    padding: 6px 0;
-    width: 100%;
-}
-
-}
-header nav .container {
-    padding: 0;
-}
-.top-container {
-    background: rgba(0,0,0,0.8);
-    display: flex;
-    flex-direction: row;
-   
 }
 
 
@@ -118,13 +63,10 @@ header nav .container {
 
 .slider li{
     width: 100%;
-    
     list-style: none;
-    
-    
 }
 
-.banner{
+.imagen{
     width: 100%;
 }
 
@@ -135,26 +77,5 @@ header nav .container {
     text-shadow: 2px 2px 1px #B7B7B7;
     margin-right: 100px;
     font-size: 25px;
-}
-
-#main-nav .nav > li.dropdown div {
-    padding: 14px 20px 13px;
-    color: #ffffff;
-    font-size: 16px;
-}
-
-.content {
-    padding: 20px 0;
-    }
-
-input.gsc-input,
-.gsc-input-box,
-.gsc-input-box-hover,
-.gsc-input-box-focus,
-.gsc-search-button {
-    box-sizing: content-box;
-    line-height: normal;
-    border: none !important;
-    border-radius: 0 !important;
 }
 
