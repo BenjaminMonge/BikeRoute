@@ -1,0 +1,122 @@
+body {
+    font-family: "Open Sans";
+    color: #666666;
+    line-height: 1.6;
+}
+
+
+.foto{
+    /*background-image: url(img/perfil.jpg);*/
+    background-repeat: no-repeat;
+    margin-top:65px; 
+    width: 250px;
+    height: 200px;;
+    position: absolute;
+    float: left;
+}
+.descripcion{
+    float: left;
+    background: darkslategrey;
+    margin-top: 240px;
+     width: 250px;
+    height: 500px;;
+    position: relative;
+}
+.datos{
+    color: white;
+    font-family: sans-serif;
+    text-shadow: 1px 1px 0px #000;
+    font-size: 25px;
+    width: 200px;
+    text-align: center;
+    box-shadow: none;
+    border: none;
+    background-color:darkslategray; 
+}
+
+.Textarea{
+     color: white;
+    font-family: sans-serif;
+    text-shadow: 1px 1px 0px #000;
+    font-size: 15px;
+    width: 200px;
+    height: 90px;
+    text-align: left;
+    box-shadow: none;
+    border: none;
+    background-color:darkslategray;
+}
+.descripcion p{
+    color: white;
+    font-size: 10px;
+    font-family:sans-serif;
+   
+}
+
+.label{
+    color: white;
+    font-family: sans-serif;
+    font-size: 15px;
+}
+.mapa{
+    position: fixed;
+    margin-left: 245px; 
+    float: right;
+    margin-top:90px;
+    width: 550px;
+    height: 98vh;
+    top: 0;
+    
+}
+.rutas{
+   
+    float: right;
+    margin-top: 70px;
+    background: cadetblue;
+    width: 290px;
+    height: 670px;
+    position: relative;
+    overflow:scroll;
+}
+.rutas h2{
+    font-family: sans-serif;
+    color: white;
+    text-align: center;
+    
+}
+.cards {
+  width: 275px;
+    background-color: white;
+}
+
+.cards > .fotoRuta {
+  height: 100px;
+  background: url('img/ruta.jpg') center / cover;*/
+}
+
+hr{
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.btnEditarPerfil{
+    float: right;
+    font-family: sans-serif;
+    border-bottom-color: white;
+    background: none;
+    color: white;
+}
+
+.titulo{
+    font-family: sans-serif;
+    font-size: 15px;
+    border: none;
+    width: 275px;
+}
+
+#map{
+    margin-left: 10px;
+    height: 100%;
+    width: 800px;
+}
+

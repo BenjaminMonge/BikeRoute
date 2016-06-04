@@ -1,0 +1,351 @@
+
+
+/* reset --------------------------  */
+
+html,
+body,
+div,
+ul,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+form,
+dfn,
+del,
+p,
+input,
+textarea,
+footer,
+header,
+nav,
+section,
+button,
+ {
+    margin: 0;
+    padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+address,
+caption,
+cite,
+code,
+th,
+dfn,
+del {
+    font-weight: normal;
+    font-style: normal;
+}
+
+ul,
+ol {
+    list-style: none
+}
+
+
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+button {
+    cursor: pointer
+}
+
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+button,
+input[type="search"],
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+textarea {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+}
+
+input,
+button,
+textarea {
+    line-height: normal;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+
+
+footer,
+header,
+nav,
+section,
+.clearfix {
+    display: block
+}
+
+
+
+
+.clearfix:after,
+.wrap:after,
+.spanning:after,
+.content:after,
+.main:after,
+aside:after,
+section:after,
+article:after,
+.text:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+    font-size: 0;
+}
+
+
+
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    font: 16px/28px "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #222222;
+    -webkit-font-smoothing: antialiased;
+    -webkit-backface-visibility: hidden;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+.main {
+    min-height: 100%;
+    overflow: hidden;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.wrap {
+    margin: 0 auto;
+    padding: 0 15px;
+    max-width: 1140px;
+}
+
+a {
+    color: #10bbf1;
+    cursor: pointer;
+    background: transparent;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #40c9f4
+}
+
+a:active {
+    color: #0b97c3
+}
+
+
+
+.button {
+    color: white;
+    background: #10bbf1;
+    height: 58px;
+    border: 2px solid #10bbf1;
+    font: 500 22px "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    padding: 0 21px;
+    -moz-transition: color 0.1s linear, background-color 0.1s linear, border-color 0.1s linear;
+    -ms-transition: color 0.1s linear, background-color 0.1s linear, border-color 0.1s linear;
+    -o-transition: color 0.1s linear, background-color 0.1s linear, border-color 0.1s linear;
+    -webkit-transition: color 0.1s linear, background-color 0.1s linear, border-color 0.1s linear;
+    transition: color 0.1s linear, background-color 0.1s linear, border-color 0.1s linear;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+
+a.button {
+    text-decoration: none;
+    display: inline-block;
+    line-height: 54px;
+    color: white;
+}
+
+a.button:hover {
+    color: white
+}
+
+a.button:active {
+    color: white
+}
+
+a.button.button-stripe {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-color: white;
+}
+
+
+.h1Encabezado{
+   font-family: fantasy;
+    text-shadow: 2px 2px 1px #000;
+    
+}
+.Descripcion{
+    text-shadow: 2px 2px 1px #000;
+    text-align: justify;
+}
+.crearCuenta:link{
+    text-decoration: none;
+    
+}
+
+::-webkit-input-placeholder {
+    color: #cccccc
+}
+
+:-moz-placeholder {
+    color: #cccccc
+}
+
+::-moz-placeholder {
+    color: #cccccc
+}
+
+:-ms-input-placeholder {
+    color: #cccccc
+}
+
+input:focus::-webkit-input-placeholder {
+    color: transparent
+}
+
+/* header --------------------------  */
+
+header {
+    padding: 104px 0;
+    background: url(../../images/fondo62.jpg) no-repeat 50% 50%;
+    font: 24px/36px "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: white;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+
+header h1 {
+    font-size: 60px;
+    line-height: 60px;
+    font-weight: 500;
+    margin-bottom: 38px;
+}
+
+header .autor {
+    padding: 12px 0 0;
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: bold;
+    color: white;
+}
+
+header .autor a {
+    color: white
+}
+
+header .buttons-wrapper {
+    padding-top: 53px
+}
+
+header .buttons-wrapper .button-stripe {
+    margin-left: 14px
+}
+
+
+.header-wrapper {
+    padding-top: 50px;
+    max-width: 655px;
+}
+
+/* footer --------------------------  */
+
+footer {
+    background: #324a57;
+    color: white;
+    font-size: 16px;
+    line-height: 28px;
+    padding: 90px 0;
+    text-align: center;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+
+
+
+
+.promo {
+    padding: 114px 0 54px
+}
+
+.promo-wrapper {
+    margin: 0 -15px
+}
+
+.promo-column {
+    text-align: justify;
+    padding: 0 30px 60px;
+    float: left;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 25%;
+}
+
+.promo-column img {
+    display: block;
+    margin-bottom: 23px;
+}
+
+.promo-column h5 {
+    font: bold 18px/24px "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
+
+
+
+@media (max-width: 979px) { 
+  .newsletter-form {
+      min-width: 0
+  }
+
+  
+  .header-wrapper {
+      padding-top: 0;
+      max-width: none;
+  }
+
