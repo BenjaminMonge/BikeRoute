@@ -1,6 +1,6 @@
 angular.module('BikeRoute')
  .controller('EventController',
-  function ($scope, Event, $location, $routeParams, ngMap) {
+  function ($scope, Event, $location, $routeParams, NgMap) {
 
         /* All the code for the map to work*/
         var vm = this

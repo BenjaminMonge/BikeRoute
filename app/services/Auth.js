@@ -1,7 +1,7 @@
 angular.module('BikeRoute')
 .factory('Auth',
   function ($location, $rootScope, Session, User, $cookies) {
-    $rootScope.currentUSer = $cookies.getObject('user') || null
+    $rootScope.currentUser = $cookies.get('user') //|| null
     $cookies.remove('user')
 
     return {

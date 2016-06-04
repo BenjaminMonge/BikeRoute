@@ -4,6 +4,7 @@ module.exports = (sequelize, DataTypes) => {
       eventid: {type: DataTypes.BIGINT, primaryKey: true, autoIncrement: true},
       evtname: DataTypes.STRING,
       description: DataTypes.STRING,
+      path: DataTypes.GEOMETRY,
       evtimage: DataTypes.STRING,
       startDate: DataTypes.DATE
     }, {
