@@ -3,6 +3,8 @@ angular.module('BikeRoute')
   function($scope, User, $location, $routeParams, $rootScope) {
 
     $scope.loadUser = function () {
+      console.log('fired up');
+      console.log($rootScope.currentUser);
        User.get({
          username: $routeParams.username
        }, function (response) {
@@ -21,9 +23,8 @@ angular.module('BikeRoute')
         }
 
         User.update({}, fd).$promise.then(function (res) {
-          console.log(res);
-          $scope.user = res
-
+          $scope.user = response.user
+          $scope.events = response.events
         })
       }
   })

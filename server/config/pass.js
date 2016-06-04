@@ -5,6 +5,7 @@ var bcrypt = require('bcryptjs');
 
 passport.serializeUser((user, done) => {
   done(null, user.username)
+  console.log('serializing');
 })
 
 passport.deserializeUser((username, done) => {
@@ -22,6 +23,7 @@ passport.use(new LocalStrategy({
   },
   function(username, password, done) {
     models.User.findById(username).then(function (user) {
+
       if(!user){
         return done(null, false, {
           'errors': {

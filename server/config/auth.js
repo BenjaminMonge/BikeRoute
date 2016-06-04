@@ -1,6 +1,6 @@
 /* La parte que se asegura que el usuario este autenticado*/
 
-module.exports.ensureAuthenticated = function ensureAuthenticated(req, res, next) {
+module.exports.access = function provideAccess(req, res, next) {
 if(req.isAuthenticated()) {return next()}
   res.sendStatus(401)
 }
