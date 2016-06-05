@@ -2,9 +2,7 @@
 
 <html>
 
-
-
-<head lang="es">
+  <head lang="es">
 
     <title>Crear ruta</title>
 
@@ -13,296 +11,99 @@
     <meta name="verify-v1" content="bA0/t1OlfVVSJ9S9VzSMLG0Q5q+tVVu1GVujXTU72Cc=" />
 
       <link rel="icon" type="image/png" href="images/myicon.png" />
-
-    <link rel="stylesheet" href="../css/eventcreate/bootstrap.min.css" />
+      <link rel="stylesheet" href="../css/eventcreate/bootstrap.min.css" />
     
-     <link rel="stylesheet" href="../css/eventcreate/nav_Bar.css" />
+    <!-- <link rel="stylesheet" href="../css/eventcreate/nav_Bar.css" />
 
     <link rel="stylesheet" href="../css/eventcreate/fonts.css" />
 
     <link rel="stylesheet" href="../css/eventcreate/main.css" />
 
-    <link rel="stylesheet" href="../css/eventcreate/responsive.css" />
+    <link rel="stylesheet" href="../css/eventcreate/responsive.css" />-->
+    <link rel="stylesheet" href="../css/eventcreate/style.css" />
+
      
 
     
     
     
-</head>
-    
-    
-    
-<body onLoad="initMap();">
-   
+  </head>
 
-<div class="body">
+  <body onLoad="initMap();">
+    <div class="body">
 
     <header>
 
-        <div class="container">
-            
-
-            <div class="top-container">
-
-                <div class="col-md-3 logo-wrapper">
-
-                    <h2 class="h2Banner"><a href="../Home.html" class="aBanner">BikeRoutES</a></h2>
-
-                    
-
-                </div>
-                
-                <!--Este es el navBar-->
-
-                <div class="nav">
-
-                    <div class="navbar_wrapper"><br>
-                        <ul>
-                            <li><a href="../Home.html">Inicio</a></li>
-                            <li><a href="../perfil/perfil.html">Mi Perfil</a></li>
-                            <li><a href="../Conocenos/Conocenos.html">Conocenos</a></li>
-                            
-                        </ul>
-                    </div>
-
-                </div>
-                <!--Aqui termina el NavBar-->
-
-            </div>
-
-        </div>
+        <!-- AQUI VA EL NAV_BAR-->
 
     </header>
 
-    <div class="content"><!--Este es todo el contenido-->
+  <section id="contenedor">
+  	       <section id="encabezado">
+  	       	 
+  	       </section>
 
-        <section class="container clearfix">
-
-            <div class="">
-
-                <div class="descriptionCrearRuta">
+             <div class="descriptionCrearRuta">
 
                     <h1>Crea tu Ruta</h1>
 
                     <p >
 
                         Mapea o dibuja una ruta utilizando la API de Google Maps. Ingresa una dirección o una ciudad para comenzar o sino acerca y arrastra el mapa. Dibuja tu ruta al hacer un clic en el mapa en cada punto de la ruta que deseas seguir. 
-			<br/><br/>
-			Puedes cambiar la vista del mapa, vista satelital, híbrido o vista del terreno utilizando el control en la esquina superior izquierda. Guarda la ruta ingresando un título, una dirección y una foto opcional y comparte la ruta que has guardado para que mas personas se unan.
-
+                        <br/><br/>
                     </p>
 
                 </div>
 
+  	       <section id="main">
+  	       	<div id="map">
+              <!--AQUI IRIA EL MAPA -->
             </div>
+  	       	<div id="right">
+              <!--CONTENEDOR PARA CAMPOS DE REGISTROS -->
+              <div id="banner">
+                <!-- AQUI IRIA LA IMAGEN DE LA RUTA QUE SUBA EL USUARIO -->
+              </div>
+              <div id="formulario">
+                
+                <!--AQUI VAN LAS OPCIONES PARA CREAR LA RUTA LOS CAMPOS QUE EL USUARIO DEBE LLENAR-->
+                 <!--Campo para el nombre-->
+                            <input class="nombre" type="text" placeholder=" Nombre de la ruta" name="rutaNombre">
+                            <textarea class="Textarea" type="text" placeholder="Descripcion" name="descripcion"></textarea>
+                             <input type="text" class="search" id="txt_find" placeholder="Ingresa la dirección aquí..." onKeyPress="" />
+                             <input class="button-input" type="button" value="Mostrar Ubicación" onClick="findOnMap();" />
 
-        </section>
+                              <div class="btnRemove" onClick="Undo();">
 
-
-
-        <section class="container clearfix">
-
-            <div id="map_container" class="clearfix">
-
-                <div id="search_street_container" class="col-md-12">
-                    <!--AQUI EMPIEZAN LAS OPCIONES PARA BUSCAR UNA DIRECCION DIGITADA -->
-
-                    <div class="col-md-10 col-sm-8 col-xs-12">
-                        
-                        
-                        <!--ESTE ES EL BUSCADOR PARA METER LA DIRECCION-->
-                        <input type="text" class="search-input" id="txt_find" placeholder="Ingresa la dirección aquí..." onKeyPress="" />
-
-                        <div id="mapoptions">
-
-                                <span class="col-md-2 col-sm-4 col-xs-12">
-                                    
-                                    <!--ESTE ES EL CHECKBOX PARA SEGUIR LAS RUTAS-->
-                                    <input name="4$chkfollowroad" type="checkbox" id="4_chkfollowroad" onChange="setFollowRoad(this.checked);" />
-
-                                    Sigue caminos
-
-                                </span>
-
-                                
-
-                        </div>
-
-                    </div>
-
-                    <div class="col-md-2 col-sm-4 col-xs-12">
-                        <!--ESTE ES EL BOTON PARA MOSTRAR LA DIRECCION DESPUES QUE SE DIGITO-->
-                        <input type="button" value="Mostrar Ubicación" class="submitOn" onClick="findOnMap();" />
-
-                    </div>
-
-                </div>
-
-
-                <div id="map_canvas_container" class="col-md-8 col-sm-8">
-                    <!--AQUI VA EL MAPA-->
-
-                    <div id="map_canvas" class="map_part" style="height:520px;"></div>
-
-                </div>
-
-                <div class="map_part col-md-4 col-sm-4">
-
-                    <div class="distance-row clearfix" id="save-root-container">
-
-                        <div id="save_route" style="display:none;">
-                            <!--AQUI ESTAN LAS OPCIONES PARA GUARDAR LA RUTA-->
-
-                            <h3> Guardar Ruta</h3>
-
-                            <div><label>Nombre de Ruta*</label></div>
-                            <!--TITULO DE LA RUTRA-->
-                            <div><input type="text" id="route_title" ></div>
-                            
-                            
-                            <div><label>Descripción*</label></div>
-                            <!--DESCRIPCION DE LA RUTA-->
-                            <div><textarea id="route_description"></textarea></div>
-                            
-                            
-                            
-                            <div><label>Imagen</label></div>
-                            <!--BOTON PARA SUBIR IMAGEN DE LA RUTA-->
-                            
-                            <form enctype="multipart/form-data">
-                                <input name="uploadedfile" type="file" />
-                               
-                            </form>
-
-                            <span id="save-root-to-server" type="button" onClick="saveMapToServer();">Guardar Ruta</span>
-
-                            <span id="route_saved_dive" style="display:none"><span id="route_id_done"></span></span>
-
-                        </div>
-                            <!--AQUI SE TERMINA GUARDAR RUTA-->
-                    </div>
-
-                    <div id="route-buttons">
-                        <!--aQUI EMPÍEZA LOS BOTONES DE RUTA CIRCULAR, BORRAR TODO Y BORRAR EL ULTIMO PUNTO--> 
-
-                        <div class="distance-row clearfix">
-                            
-                            
-                            
-                            
-
-                            <div class="col-md-6 col-sm-12">
-                                    <!--ESTE ES EL BOTON DE RUTA CIRCULAR-->
-                                <div class="draw_btn" onClick="loopRoute();">
-
-                                    <span class="loop-root-icon"/></span> <span>Ruta Circular</span>
+                                    <span class="iconDeshacer"/></span> 
 
                                 </div>
 
-                            </div>
-                        
-                        
-                        
-                        
-                        
 
-                            <div class="col-md-6 col-sm-12">
-                                <!--BOTON DE DESHACER LO ULTIMO-->
-                                <div class="draw_btn" onClick="Undo();">
+                            <div class="btnRemove" onClick="clearMarkers();">
 
-                                    <span class="undo-last-leg-icon"/></span> <span>Deshacer lo último recorrido</span>
+                                    <span class="iconRemove"/></span> 
 
                                 </div>
 
-                            </div>
-                    
-                    
-                    
-                    
-                    
 
-                        </div>
+                           <input type="button" value="Guardar Ruta" class="button-input-guardar" onClick="findOnMap();" />
 
-                        <div class="distance-row clearfix">
+         
+               </div>
 
-                            <!--bOTON PARA BORRAR TODOS LOS PUNTOS HECHOS-->
+            </div>
+  	       </section>
 
-                            <div class="col-md-6 col-sm-12">
+  	       
 
-                                <div class="draw_btn" onClick="clearMarkers();">
-
-                                    <span class="start-over-icon"/></span> <span>Remover todo</span>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                        <div class="distance-row clearfix" id="save-root-btn">
-
-                            <div class="col-md-12">
-                                <!--ESTE ES EL BOTON DE GUARDAR, AL DARLE CLIC GENERA LAS OPCIONES DE GUARDAR -->
-                                <div id="uxLogin" onClick="">
-
-                                    <span>Guardar Ruta</span>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                        <div class="distance-row clearfix">
-
-                            <div class="col-md-12">
-
-                                <div class="distance-container clearfix">
-                                    
-                                <!-- MIDE LA DISTANCIA DE LA RUTA CREADA-->
-
-                                    <div class="col-md-12"><b>Distancia</b></div>
-
-                                    <div class="col-md-8 col-sm-7 col-xs-7">
-
-                                        <div class="dist">
-
-                                            <div id="totaldistance"></div>
-
-                                        </div>
-
-                                    </div>
-
-                                    <div id="tdDistUnit" name="distanceUnit" class="col-md-4 col-sm-4">
-                                        <!--ESTE ES EL RECUADRO DONDE SE VE LA DISTANCIA TOTAL DE LA RUTA-->
-                                        <select id='distoption' class="inputtype_l" onChange="">
-
-                                            <option value='1' >Millas</option>
-
-                                            <option value='2' selected="selected">Km</option>
-
-                                        </select>
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-                        </div>
-
-                       
-        </section>
-
-    </div>
-
-
-        
-</div>
-
-<img src="../images/franja_naranja.png">
+  </section>
+  <img src="../images/franja_naranja.png">
     <h5 class="firma">BikeRoutES</h5>
+  </div>
 
-</body>
- 
+  </body>
+
+
 
 </html>
