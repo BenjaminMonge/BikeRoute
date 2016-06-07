@@ -1,8 +1,8 @@
 angular.module('BikeRoute')
 .factory('Auth',
   function ($location, $rootScope, Session, User, $cookies) {
-    $rootScope.currentUser = $cookies.get('user') //|| null
-    $cookies.remove('user')
+    $rootScope.currentUser = $cookies.get('user') || null
+    //$cookies.remove('user')
 
     return {
       /* Describe el comportamiento para iniciar sesion*/
@@ -15,9 +15,10 @@ angular.module('BikeRoute')
           rememberMe: user.rememberMe
         }, function(user) {  /* La funcion devuelve el usuario y asigna su informacion*/
           $rootScope.currentUser = user
-          return cb()
-        }, function(err) {
-          return cb(err.data);
+          $cookies.put('user', user.username)
+          return cb(user.username, null)
+        }, function( err) {
+          return cb(null, err.data);
         });
       },
 /* Usan el servicio usuario para crear y modificar el usuario actual*/

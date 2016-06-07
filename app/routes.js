@@ -2,18 +2,17 @@ var routeProvider
 angular.module('BikeRoute', ['ngRoute', 'ngResource', 'http-auth-interceptor',
 'ngAnimate', 'ngCookies', 'ngMap'])
   .config(($routeProvider, $locationProvider) => {
-
-
     $routeProvider
     .when('/', {templateUrl: 'app/views/home.html', controller: 'HomeController'})
+    .when('/create', {templateUrl: 'app/views/eventcreate.html', controller: 'EventController'})
     .when('/profile/:username', {templateUrl: 'app/views/profile.html', controller: 'ProfileController'})
     .when('/event/:eventid', {templateUrl: 'app/views/event.html', controller: 'EventController'})
+    .when('/conocenos', {templateUrl: 'app/views/conocenos.html'})
+    .when('/discover', {templateUrl: 'app/views/discover.html'})
     .otherwise({redirectTo: '/'})
-
   })
 
   .run(function ($rootScope, $location, Auth) {
-    console.log('listening');
     $rootScope.$watch('currentUser', function (currentUser) {
     if (!currentUser && (['' ,'/'].indexOf($location.path()) == -1)){
         Auth.currUser();

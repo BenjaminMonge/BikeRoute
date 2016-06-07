@@ -5,7 +5,6 @@ var bcrypt = require('bcryptjs');
 
 passport.serializeUser((user, done) => {
   done(null, user.username)
-  console.log('serializing');
 })
 
 passport.deserializeUser((username, done) => {

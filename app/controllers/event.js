@@ -1,59 +1,73 @@
 angular.module('BikeRoute')
  .controller('EventController',
-  function ($scope, Event, $location, $routeParams, NgMap) {
-
+  function ($scope, Event, $location, $routeParams, NgMap, Comment, $route) {
+        var actual = null;
         /* All the code for the map to work*/
-        var vm = this
-        vm.path = [[]]
-        vm.positions = vm.path
+        //vm = this
+        $scope.path = [[]]
+        $scope.path.shift()
+        $scope.positions = $scope.path
 
-        vm.addMarkerAndPath = function (event) {
-         vm.path.push([event.latLng.lat(), event.latLng.lng()])
+        $scope.addMarkerAndPath = function (event) {
+         $scope.path.push([event.latLng.lat(), event.latLng.lng()])
         }
 
-        vm.loadRoute = function () {
-          var coor = [[]]
-
+        function loadRoute(coor) {
+          var coor = $scope.bikeevent.path.coordinates[0]
           for (var i = 0; i < coor.length; i++) {
-            vm.path.push(coor[i])
+            $scope.path.push(coor[i])
           }
         }
 
-        vm.deleteMarkers = function() {
-          if(vm.path.length > 0){
-            vm.path.splice((vm.path.length-1), 1)
+        $scope.deleteMarkers = function() {
+          if($scope.path.length > 0){
+            $scope.path.splice(($scope.path.length-1), 1)
           }
         }
 
-        vm.saveRoute = function () {
-          var route = angular.toJson(vm.path)
-        }
         /* End of map code and start of the functions that provide the functionality*/
+
+        $scope.create = function () { /* Method that creates the route*/
+          var sub = angular.toJson($scope.path)
+          var data = {
+            evtname: $scope.route.evtname,
+            description: $scope.route.desc,
+            path: sub,
+            startDate: new Date()
+          }
+          var fd = new FormData();
+           for (var key in data) {
+               fd.append(key, data[key]);
+           }
+
+           Event.create({}, fd).$promise.then(function (res) {
+
+           })
+        }
 
 
         $scope.comment = function () {  /* User can post a comment*/
-          $scope.bikeevent.comment = {
-            content: 'I COMMENTED',
+          var newcomm = {
+            eventid: $routeParams.eventid,
+            content: $scope.comm,
             datePosted: new Date()
           }
-          var bikeevent = $scope.bikeevent
-          bikeevent.$update(function () {
-            $location.path('/event/' + bikeevent.eventid)
+          Comment.save(newcomm, function (res) {
           })
         }
 
         $scope.participate = function () {  /* Method to add the user to the attendance list*/
-          var upt = {
-            eventid: $scope.bikeevent
-          }
-          Event.update(bikeevent ,function () {
-              $location.path('/event/' + bikeevent.eventid)
+          Event.update({eventid: $routeParams.eventid} ,function (response) {
+            $route.reload();
           })
         }
 
         $scope.loadEvent = function () {   /* Retrieves all the event information from the database*/
-          Event.get({eventid: $routeParams.eventid}, function (bikeevent) {
-            $scope.bikeevent = bikeevent
+          Event.get({eventid: $routeParams.eventid}, function (response) {
+            $scope.bikeevent = response.bikeevent
+            $scope.participants = response.participants
+            $scope.comments = response.comments
+            loadRoute()
           })
         }
 

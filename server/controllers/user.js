@@ -21,13 +21,26 @@ module.exports.create = (req, res) => {
 }
 
 module.exports.get = (req, res) => {
-  console.log('request received');
   models.User.findById(req.params.username, {include: [models.Event]}).then((userfound) => {
-    response = {
-      user: userfound.dataValues,
-      events: userfound.Events
-    }
-    res.status(200).send(response)
+    userfound.getFriends().then((obj)=>{
+      var friends = {}
+      var candidates = {}
+      for (var i = 0; i < obj.length; i++) {
+        if (obj[i].accepted) {
+          friends[i] = obj[i]
+        } else {
+          candidates[i] = obj[i]
+        }
+      }
+
+      response = {
+        user: userfound.dataValues,
+        friendlist: friends,
+        friendwant: candidates
+      }
+      console.log(response.friendlist);
+      res.status(200).send(response)
+    })
   }).catch((error) => {
     res.status(500)
   })
@@ -47,4 +60,42 @@ module.exports.update = (req, res) => {
     }).catch((error) => {
       res.status(500).send(error)
     })
+}
+
+module.exports.delete = (req, res) => {
+  models.User.findById(req.user.username).then((usefound) => {
+    userfound.destroy()
+    res.status(200)
+  }).catch((error) => {
+    res.status(500).send(error)
+  })
+}
+
+module.exports.add = (req, res) => {
+  models.User.findById(req.user.username).then((userfound) => {
+    userfound.addFriend([req.body.username], {accepted: false})
+    res.status(200)
+  }).catch((error) => {
+    res.status(500).send(error)
+  })
+}
+
+module.exports.agree = (req, res) => {
+  models.User.findById(req.user.username).then((userfound) => {
+    userfound.hasUser([req.body.username]).then((ass) => {
+      ass.update({accepted: true})
+      res.status(200)
+    })
+  }).catch((error) => {
+    res.status(500).send(error)
+  })
+}
+
+module.exports.deny = (req, res) => {
+  models.User.findById(req.user.username).then((userfound) => {
+    userfound.removeUser([req.body.username])
+    res.status(200)
+  }).catch((error) => {
+    res.status(500).send(error)
+  })
 }

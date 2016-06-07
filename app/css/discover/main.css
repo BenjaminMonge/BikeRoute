@@ -1,0 +1,63 @@
+body {
+    font-family: "Open Sans";
+    color: #666666;
+    line-height: 1.6;
+    background-image: url(app/images/fondo3.jpg);
+}
+
+
+
+.mapa{
+    position:absolute;
+    margin-top:70px;
+    width: 930px;
+    height: 89%;
+    top: 0;
+    background-color: rgba(0,0,0,0.7);
+    
+}
+.rutas{
+   background-color: rgba(0,0,0,0.7);
+    float: right;
+    margin-top: 70px;
+    width: 400px;
+    height: 590px;
+    position: relative;
+    overflow:scroll;
+}
+.rutas h2{
+    font-family: sans-serif;
+    color: white;
+    text-align: center;
+    
+}
+.titulo{
+    border: none;
+    width: 100%;
+    background: none;
+    font-family: sans-serif;
+    color: black;
+}
+.cards {
+    background-color: white;
+}
+
+.cards > .fotoRuta {
+  height: 100px;
+  /*background: url('img/ruta.jpg') center / cover;*/
+}
+
+hr{
+    margin-top: 0;
+    margin-bottom: 0;
+    border: 10px;
+}
+
+
+
+#map{
+    height: 97%;
+     width: 910px;
+    margin-left: 10px;
+    margin-top: 10px;
+}

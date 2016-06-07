@@ -1,15 +1,15 @@
 angular.module('BikeRoute')
 .controller('ProfileController',
-  function($scope, User, $location, $routeParams, $rootScope) {
+  function($scope, User, $location, $routeParams, $rootScope, Friend, $route) {
 
     $scope.loadUser = function () {
-      console.log('fired up');
-      console.log($rootScope.currentUser);
        User.get({
          username: $routeParams.username
        }, function (response) {
          $scope.user = response.user
-         $scope.events = response.events
+         $scope.events = response.user.Events
+         $scope.friends = response.friendlist
+         $scope.candidates = response.friendwant
        })
      }
 
@@ -25,6 +25,25 @@ angular.module('BikeRoute')
         User.update({}, fd).$promise.then(function (res) {
           $scope.user = response.user
           $scope.events = response.events
+        })
+      }
+
+      $scope.addUser = function () {
+        console.log($routeParams.username);
+        Friend.save({username: $routeParams.username}, function (response) {
+          $route.reload();
+        })
+      }
+
+      $scope.acceptFriend = function () {
+        Friend.update({username: $routeParams.username}, function (response) {
+          $route.reload()
+        })
+      }
+
+      $scope.rejectUser = function () {
+        Friend.delete({username: $routeParams.username}, function (response) {
+          $route.reload()
         })
       }
   })

@@ -98,14 +98,8 @@ section,
 
 
 
-.clearfix:after,
+
 .wrap:after,
-.spanning:after,
-.content:after,
-.main:after,
-aside:after,
-section:after,
-article:after,
 .text:after {
     content: ".";
     display: block;
@@ -130,6 +124,26 @@ body {
     -webkit-backface-visibility: hidden;
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
+}
+
+header {
+
+    width: 100%;
+    text-align: left;
+    background-size:100% 100%;
+    border-bottom: 0px solid #dddddd;
+    border-right: 0px solid #dddddd;
+    border-left: 0px solid #dddddd;
+}
+
+header  .container {
+    position: fixed;
+    z-index: 1000;
+    top:0;
+    width: 100%;
+    padding: 5px 0;
+    height: 70px;
+
 }
 
 .main {
@@ -208,7 +222,7 @@ a.button.button-stripe {
 .h1Encabezado{
    font-family: fantasy;
     text-shadow: 2px 2px 1px #000;
-    
+
 }
 .Descripcion{
     text-shadow: 2px 2px 1px #000;
@@ -216,7 +230,7 @@ a.button.button-stripe {
 }
 .crearCuenta:link{
     text-decoration: none;
-    
+
 }
 
 ::-webkit-input-placeholder {
@@ -241,7 +255,7 @@ input:focus::-webkit-input-placeholder {
 
 /* header --------------------------  */
 
-header {
+.Encabezado {
     padding: 104px 0;
     background: url(../../images/fondo62.jpg) no-repeat 50% 50%;
     font: 24px/36px "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -256,14 +270,14 @@ header {
 }
 
 
-header h1 {
+.Encabezado h1 {
     font-size: 60px;
     line-height: 60px;
     font-weight: 500;
     margin-bottom: 38px;
 }
 
-header .autor {
+.Encabezado .autor {
     padding: 12px 0 0;
     font-size: 14px;
     line-height: 24px;
@@ -271,20 +285,20 @@ header .autor {
     color: white;
 }
 
-header .autor a {
+.Encabezado .autor a {
     color: white
 }
 
-header .buttons-wrapper {
+.Encabezado .buttons-wrapper {
     padding-top: 53px
 }
 
-header .buttons-wrapper .button-stripe {
+.Encabezado .buttons-wrapper .button-stripe {
     margin-left: 14px
 }
 
 
-.header-wrapper {
+.encabezado-wrapper {
     padding-top: 50px;
     max-width: 655px;
 }
@@ -338,14 +352,13 @@ footer {
 
 
 
-@media (max-width: 979px) { 
+@media (max-width: 979px) {
   .newsletter-form {
       min-width: 0
   }
 
-  
-  .header-wrapper {
+
+  .encabezado-wrapper {
       padding-top: 0;
       max-width: none;
   }
-
