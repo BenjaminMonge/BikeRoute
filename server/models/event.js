@@ -12,6 +12,7 @@ module.exports = (sequelize, DataTypes) => {
         associate: (models) => {
           Event.belongsToMany(models.User, {through: models.Participation})
           Event.belongsTo(models.City)
+          Event.hasMany(models.Comment)
         }
       }
     }

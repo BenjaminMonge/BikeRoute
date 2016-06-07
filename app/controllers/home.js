@@ -7,12 +7,24 @@ angular.module('BikeRoute')
          'username': $scope.user.username,
          'password': $scope.user.password
        },
-       function(err) {
+       function(username, err) {
          if (!err) {
-          $location.path('/')
+          $location.path('/profile/'+ username)
          } else {
            console.log(err)
          }
      });
+        }
+
+        $scope.signup = function (form) {
+            $scope.member.joinDate = new Date()
+            var member = angular.toJson($scope.member)
+            Auth.createUser(member, function (username, err) {
+              if (!err){
+                $location.path('/profile/' + username)
+              } else {
+                console.log(err)
+              }
+            })
         }
   })

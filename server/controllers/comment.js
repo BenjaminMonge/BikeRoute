@@ -2,20 +2,15 @@ var models = require('../models');
 
 
 module.exports.create = (req, res) => {
-  models.findById(req.params.eventid).then((eventfound) => {
-    var comm = req.params.comment
-    eventfound.addComments([comm], {UserUsername: req.user.username}).success(()=> {
-      res.json(comm)
-    })
-  })
-}
-
-module.exports.edit = (req, res) => {
-  newcomm = req.params.comment
-  models.findById(newcomm.id).then((comm) => {
-    comm.updateAttributes({content: newcomm.content}).then(() => {
-      res.json(comm)
-    })
+  console.log(datePosted)
+  var comm = {
+    content: req.body.content,
+    datePosted: req.body.datePosted,
+    EventEventid: req.body.eventid,
+    UserUsername: req.user.username
+  }
+  models.Comment.build(comm).save().then((commsav) =>{
+    res.status(200)
   })
 }
 

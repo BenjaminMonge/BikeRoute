@@ -24,7 +24,7 @@ app.use(session({
   secret: 'iatepie',
   resave: true,
   saveUninitialized: true,
-  cookie: { maxAge: 600000, secure: false }
+  cookie: { maxAge: 6000000, secure: false }
 }))
 
 app.use(passport.initialize())

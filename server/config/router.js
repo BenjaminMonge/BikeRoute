@@ -21,9 +21,13 @@ module.exports = (app) => {
   app.get('/api/user/:username', users.get)
   app.put('/api/user/:username', upload.single('profpic'), auth.access, auth.canEdit, users.update)
   /* CRD y funcionalidad del evento*/
-  app.post('/api/event/:eventid', auth.access, events.create)
+  app.post('/api/event/:eventid', upload.single('evtimage'), auth.access, events.create)
   app.get('/api/event/:eventid', events.get)
   app.put('/api/event/:eventid', auth.access, events.participate)
   /* CUD para los comentarios*/
   app.post('/api/comment/', auth.access, comments.create)
+  /* CRUD para las amistades*/
+  app.post('/api/friend/', auth.access, users.add)
+  app.put('/api/friend/', auth.access, users.agree)
+  app.delete('/api/friend/', auth.access, users.deny)
 }
