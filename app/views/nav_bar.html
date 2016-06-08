@@ -6,7 +6,7 @@
     </head>
 
         <header>
-         <div class="container">
+         <div class="container" ng-controller="StartController">
             <div class="top-container">
                 <div class="h2banner">
                     <a href="/#/" class="aBanner">BikeRoutES</a>
@@ -14,7 +14,7 @@
                 <div class="nav">
                     <div class="navbar_wrapper"><br>
                         <ul>
-                            <li><a href="/#/profile">Mi perfil</a></li>
+                            <li><a ng-click="redirectProfile()">Mi perfil</a></li>
                             <li><a href="/#/create">Crear Ruta</a></li>
                             <li><a href="/#/conocenos">Conocenos</a></li>
                         </ul>

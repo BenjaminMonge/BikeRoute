@@ -26,9 +26,12 @@
 
 
         <div class="descripcion">
+          <div custom-file-input ng-model="user.profpic">
+            <input type="file" ng-model="user.profpic" accept="image/*">
+          </div>
             <button class="btnEditarPerfil">Editar Perfil</button>
             <button class="btnAgregar" ng-click=addUser()>Agregar</button>
-            <button class="btnGuardarPerfil">Guardar</button>
+            <button class="btnGuardarPerfil" ng-click="updateUser()">Guardar</button>
 
             <br>
 

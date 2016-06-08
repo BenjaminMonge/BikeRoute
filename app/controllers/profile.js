@@ -22,9 +22,8 @@ angular.module('BikeRoute')
             fd.append(key, data[key]);
         }
 
-        User.update({}, fd).$promise.then(function (res) {
+        User.update({}, fd).$promise.then(function (response) {
           $scope.user = response.user
-          $scope.events = response.events
         })
       }
 
