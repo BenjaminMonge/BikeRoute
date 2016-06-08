@@ -13,7 +13,7 @@ a, a:hover, a:focus {
 
 
 .titulo{
-    color: chocolate;
+    color: #f2620b;
     font-family: fantasy;
     text-shadow: 2px 2px 1px #000;
     font-size: 40px;
@@ -28,7 +28,7 @@ a, a:hover, a:focus {
 
 .Textarea{
     margin-top: 25px;
-     color: white;
+    color: white;
     font-family: sans-serif;
     text-shadow: 1px 1px 0px #000;
     font-size: 25px;
@@ -68,11 +68,9 @@ a, a:hover, a:focus {
 }
 
 .body{
-
   background-image: url(../../images/fondo32.jpg);
-
-
 }
+
 .Comentarios{
     width: 80%;
     height: 400px;
