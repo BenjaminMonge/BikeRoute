@@ -1,6 +1,8 @@
 angular.module('BikeRoute')
  .controller('EventController',
-  function ($scope, Event, $location, $routeParams, NgMap, Comment, $route) {
+  function ($scope, Event, $location, $routeParams, NgMap, Comment, $route, Change) {
+        Change.check();
+
         var actual = null;
         /* All the code for the map to work*/
         //vm = this
@@ -12,7 +14,7 @@ angular.module('BikeRoute')
          $scope.path.push([event.latLng.lat(), event.latLng.lng()])
         }
 
-        function loadRoute(coor) {
+        function loadRoute() {
           var coor = $scope.bikeevent.path.coordinates[0]
           for (var i = 0; i < coor.length; i++) {
             $scope.path.push(coor[i])
@@ -29,19 +31,16 @@ angular.module('BikeRoute')
 
         $scope.create = function () { /* Method that creates the route*/
           var sub = angular.toJson($scope.path)
-          var data = {
-            evtname: $scope.route.evtname,
-            description: $scope.route.desc,
-            path: sub,
-            startDate: new Date()
-          }
+          $scope.route.path = sub
+          $scope.route.startDate = new Date()
+          var data = $scope.route
           var fd = new FormData();
            for (var key in data) {
                fd.append(key, data[key]);
            }
 
            Event.create({}, fd).$promise.then(function (res) {
-
+              $location.path('/event/'+res.eventid)
            })
         }
 
@@ -52,7 +51,9 @@ angular.module('BikeRoute')
             content: $scope.comm,
             datePosted: new Date()
           }
-          Comment.save(newcomm, function (res) {
+          Comment.save(newcomm, function (response) {
+            console.log(response);
+            $route.reload()
           })
         }
 
@@ -68,6 +69,12 @@ angular.module('BikeRoute')
             $scope.participants = response.participants
             $scope.comments = response.comments
             loadRoute()
+          })
+        }
+
+        $scope.deleteEvent = function () {
+          Event.delete({eventid: $routeParams.eventid}, function (res) {
+            $location.path('/discover')
           })
         }
 

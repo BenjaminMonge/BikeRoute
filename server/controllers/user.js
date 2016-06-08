@@ -38,7 +38,6 @@ module.exports.get = (req, res) => {
         friendlist: friends,
         friendwant: candidates
       }
-      console.log(response.friendlist);
       res.status(200).send(response)
     })
   }).catch((error) => {
@@ -49,13 +48,11 @@ module.exports.get = (req, res) => {
 module.exports.update = (req, res) => {
   if (req.file) {
     req.body.image = req.file.path
-    console.log(req.body.path);
   }
   models.User.findById(req.user.username, {include: [models.City]}).then((userfound) => {
       userfound.update(req.body).then(() => {
         response = {
-          user: userfound.dataValues,
-          events: userfound.Events
+          user: userfound.dataValues
         }
         res.status(200).send(response)
       })
@@ -65,8 +62,17 @@ module.exports.update = (req, res) => {
 }
 
 module.exports.delete = (req, res) => {
-  models.User.findById(req.user.username).then((usefound) => {
-    userfound.destroy()
+  models.User.findById(req.user.username).then((userfound) => {
+    models.Comment.destroy({where: {UserUsername: req.user.username}})
+    models.Participation.findAll({where: {UserUsername: req.user.username, created: true}}).then((arr) => {
+      var list = []
+      for (var i = 0; i < arr.length; i++) {
+        list[i] = arr[i].EventEventid
+      }
+      models.Comment.destroy({where: {EventEventid: list}})
+      models.Event.destroy({where: {eventid: list}})
+    })
+    //userfound.destroy()
     res.status(200)
   }).catch((error) => {
     res.status(500).send(error)

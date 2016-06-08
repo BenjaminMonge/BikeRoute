@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     },{
       classMethods: {
         associate: (models) => {
-          User.belongsToMany(models.Event, {through: models.Participation})
+          User.belongsToMany(models.Event, {through: models.Participation, onDelete: 'CASCADE'})
           User.belongsToMany(models.User, {as: 'Friends', through: models.Friendship})
           User.belongsTo(models.City)
           User.hasMany(models.Comment)

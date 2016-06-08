@@ -49,6 +49,9 @@
               <!--CONTENEDOR PARA CAMPOS DE REGISTROS -->
               <div id="banner">
                 <!-- AQUI IRIA LA IMAGEN DE LA RUTA QUE SUBA EL USUARIO -->
+                <div custom-file-input ng-model="route.photo">
+                  <input type="file" ng-model="route.photo" accept="image/*">
+                </div>
               </div>
               <form id="formulario" ng-submit="create()">
 

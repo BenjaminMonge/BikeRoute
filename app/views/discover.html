@@ -20,9 +20,17 @@
 
 
         <div class="mapa">
-            <div id="map">
-                <!--AQUI VA EL MAPA-->
-            </div>
+          <div id="map" map-lazy-load="https://maps.google.com/maps/api/js">
+            <ng-map zoom="13" center="{{center}}" on-click="addMarkerAndPath()">
+              <marker ng-repeat="pos in positions" position="{{pos}}"></marker>
+              <shape name="polyline" id="foo"
+              path="{{path}}"
+              stroke-color="#FF0000"
+              stroke-opacity="1.0"
+              stroke-weight="3">
+            </shape>
+          </ng-map>
+          </div>
 
     </div>
 
@@ -30,12 +38,10 @@
         <div class="rutas">
             <h2>RUTAS</h2>
             <!-- ESTAS SON LAS CARDS -->
-                <div class="cards">
+                <div class="cards" ng-repeat="route in routes" ng-class="{'selected':$index == selectedRow}" ng-click="setClickedRow($index)">
                     <div class="fotoRuta">
-
                        <!--Aqui va el titulo de la RUTA-->
-                        <input class="titulo" type="text">
-
+                        <input class="titulo" type="text">{{route.evtname}}</input>
                     <!-- Aqui iria la imagen de la ruta-->
                     </div>
                    <hr/>
