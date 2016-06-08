@@ -1,7 +1,7 @@
 {
   "development": {
-    "username": "benjamin",
-    "password": "iatepie",
+    "username": "postgres",
+    "password": "postgres",
     "database": "bikeroute",
     "host": "127.0.0.1",
     "dialect": "postgres",
