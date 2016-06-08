@@ -30,7 +30,7 @@
             <input type="file" ng-model="user.profpic" accept="image/*">
           </div>
             <button class="btnEditarPerfil" ng-click="admit()" ng-show="canedit()">Editar Perfil</button>
-            <button class="btnAgregar" ng-show="canadd()">Agregar</button>
+            <button class="btnAgregar" ng-show="canadd()" ng-click="addUser()">Agregar</button>
             <button class="btnGuardarPerfil" type="submit" ng-show="allow()">Guardar</button>
             <button class="btnEditarPerfil" ng-click="deleteUser()">Borrar cuenta</button>
 
@@ -92,7 +92,7 @@
                         <div class="individuoAgregado" ng-repeat="x in friends" >
                             <div class="eliminarAmigo" ng-click=deleteFriend($index)><button>x</button> </div><!--BOTON PARA ELIMINAR UN AMIGO AGREGADO-->
                             <div class="nombreAmigo">{{x}}</div><!--Aca va el nombre de un amigo agregado-->
-                            <div class="fotoAmigo"></div><!--FOTO DE UN AMIGO AGREGADO-->
+                            <div class="fotoAmigo" ng-click="goFriend($index)"></div><!--FOTO DE UN AMIGO AGREGADO-->
                         </div>
                     </div>
 
@@ -105,7 +105,7 @@
                                 <button class="btnAmigoNuevo" ng-click="acceptFriend($index)">Agregar</button><!-- BOTON PARA ACEPTAR SOLICITUD DE AMIGO-->
                             </div>
                             <div class="nombreAmigo">{{y}}</div><!--Nombre del AMIGO SUGERIDO-->
-                             <div class="fotoAmigo"></div><!--FOTO DEL AMIGO SUGERIDO-->
+                             <div class="fotoAmigo" ng-click=goUser($index)></div><!--FOTO DEL AMIGO SUGERIDO-->
                         </div>
                     </div>
                 </div><!--Aqui terminan los amigos-->
@@ -121,7 +121,7 @@
                 <div class="cards" ng-repeat="event in user.Events" ng-class="{'selected':$index == selectedRow}" ng-click="setClickedRow($index)">
                     <div class="fotoRuta" >
                       <input class="titulo" type="text">{{event.evtname}}</input>
-                        <img ng-click="loadThis()" src={{user.Events.evtimage}} style="width:250px;height:200px;">
+                        <img ng-click="loadThis($index)" src={{user.Events.evtimage}} style="width:250px;height:200px;">
                        <!--Aqui va el titulo de la RUTA-->
 
 

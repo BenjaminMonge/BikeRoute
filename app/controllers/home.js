@@ -1,7 +1,7 @@
 angular.module('BikeRoute')
   .controller('HomeController',
-    function($scope, Auth, $location) {
-
+    function($scope, Auth, $location, $route) {
+      
         $scope.login = function(isValid) {
           if(isValid){
             Auth.login('password', {

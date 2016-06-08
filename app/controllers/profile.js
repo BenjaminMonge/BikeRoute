@@ -2,9 +2,11 @@ angular.module('BikeRoute')
 .controller('ProfileController',
   function($scope, User, $location, $routeParams, $rootScope, Friend, $route, Change, NgMap) {
     Change.check();
+
     var willedit = true;
-    var canadd = false;
+    var canadd = true;
     var allow = false
+
     $scope.canedit = function () {
       return willedit
     }
@@ -53,7 +55,9 @@ angular.module('BikeRoute')
          $scope.user = response.user
          $scope.friends = response.friendlist
          $scope.candidates = response.friendwant
-         willedit = true
+         if($scope.user.username === $rootScope.currentUser.username) {willedit=true}
+         if(response.friendlist === $rootScope.currentUser.username) {canadd=false}
+        if(response.friendwant === $rootScope.currentUser.username) {canadd=false}
          if ($scope.user.Events[0]) {
            loadRoute($scope.user.Events[0].path.coordinates[0])
          }
@@ -114,7 +118,21 @@ angular.module('BikeRoute')
         })
       }
 
-      $scope.loadThis = function () {
-        console.log('display route');
+      $scope.loadThis = function (ind) {
+        console.log(ind);
+        console.log($scope.user.Events[0]);
+        var name = $scope.user.Events[ind].eventid
+        $location.path('/event/'+ name)
+      }
+
+      $scope.goUser = function (ind) {
+        var usrname = $scope.candidates[ind]
+        $location.path('/profile/' + usrname)
+      }
+
+      $scope.goFriend = function (ind) {
+        console.log(ind);
+        var usrname = $scope.friends[ind]
+        $location.path('/profile/' + usrname)
       }
   })

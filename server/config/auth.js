@@ -2,7 +2,7 @@
 
 module.exports.access = function provideAccess(req, res, next) {
 if(req.isAuthenticated()) {return next()}
-  res.sendStatus(401)
+  res.json(null)
 }
 
 module.exports.canEdit = function canEdit(req, res, next) {

@@ -47,8 +47,12 @@ angular.module('BikeRoute')
 
       currUser: function() {
         Session.get(function(user) {
-          console.log(user);
-          $rootScope.currentUser = user;
+          if(!user.username){
+            $location.path('/')
+          } else {
+            $rootScope.currentUser = user;
+            //$cookies.put('user', user.username)
+          }
         });
       },
 

@@ -13,14 +13,6 @@ angular.module('BikeRoute', ['ngRoute', 'ngResource', 'http-auth-interceptor',
     .otherwise({redirectTo: '/'})
   })
 
-    .run(function ($rootScope, $location) {
-      $rootScope.$on('event:auth-loginRequired', function() {
-           console.log('redirect');
-           $location.path('/');
-           return false;
-         })
-    })
-
     .directive('customFileInput', function() {
     return {
       restrict: 'EA',
