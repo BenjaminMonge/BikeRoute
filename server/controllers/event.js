@@ -44,3 +44,10 @@ module.exports.participate = (req, res) => {
       res.status(500)
     })
   })
+
+  module.exports.getall = ((req, res) => {
+    models.Event.findAll().then((allevt) => {
+      console.log(allevt);
+      res.status(200).send(allevt)
+    })
+  })

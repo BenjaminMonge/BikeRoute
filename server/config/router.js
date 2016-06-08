@@ -30,4 +30,6 @@ module.exports = (app) => {
   app.post('/api/friend/', auth.access, users.add)
   app.put('/api/friend/', auth.access, users.agree)
   app.delete('/api/friend/', auth.access, users.deny)
+  /* discover*/
+  app.get('/api/getall/', auth.access, events.getall)
 }

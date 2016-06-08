@@ -8,7 +8,7 @@ angular.module('BikeRoute', ['ngRoute', 'ngResource', 'http-auth-interceptor',
     .when('/profile/:username', {templateUrl: 'app/views/profile.html', controller: 'ProfileController'})
     .when('/event/:eventid', {templateUrl: 'app/views/event.html', controller: 'EventController'})
     .when('/conocenos', {templateUrl: 'app/views/conocenos.html'})
-    .when('/discover', {templateUrl: 'app/views/discover.html'})
+    .when('/discover', {templateUrl: 'app/views/discover.html', controller: 'StartController'})
     .otherwise({redirectTo: '/'})
   })
 
