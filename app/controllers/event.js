@@ -57,6 +57,10 @@ angular.module('BikeRoute')
           })
         }
 
+        $scope.deleteComm = function (ind) {
+          //Comment.delete({})
+        }
+
         $scope.participate = function () {  /* Method to add the user to the attendance list*/
           Event.update({eventid: $routeParams.eventid} ,function (response) {
             $route.reload();

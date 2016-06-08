@@ -9,11 +9,11 @@ angular.module('BikeRoute').factory('Change',
       }
     })
 
-   $rootScope.$on('event:auth-loginRequired', function() {
+   /*$rootScope.$on('event:auth-loginRequired', function() {
         console.log('redirect');
         $location.path('/');
         return false;
-      })
+      })*/
 
 
     }

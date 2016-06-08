@@ -1,5 +1,5 @@
 angular.module('BikeRoute')
-.controller('StartController', function ($scope, $location, Event, $cookies, $http, NgMap) {
+.controller('StartController', function ($scope, $location, Event, $cookies, $http, NgMap, $rootScope, Auth) {
 
   $scope.redirectProfile = function () {
     user = $cookies.get('user')
@@ -29,6 +29,10 @@ angular.module('BikeRoute')
   }).error(function(error){
      console.error(error);
   });
+  }
+
+  $scope.logout = function () {
+    Auth.logout()
   }
 
 })

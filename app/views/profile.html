@@ -25,13 +25,13 @@
 
 
 
-        <div class="descripcion">
-          <div custom-file-input ng-model="user.profpic">
+        <form class="descripcion" name="editForm" ng-submit="updateUser(editForm.$valid)">
+          <div custom-file-input ng-model="user.profpic" ng-show="allow()">
             <input type="file" ng-model="user.profpic" accept="image/*">
           </div>
-            <button class="btnEditarPerfil">Editar Perfil</button>
-            <button class="btnAgregar" ng-click=addUser()>Agregar</button>
-            <button class="btnGuardarPerfil" ng-click="updateUser()">Guardar</button>
+            <button class="btnEditarPerfil" ng-click="admit()" ng-show="canedit()">Editar Perfil</button>
+            <button class="btnAgregar" ng-show="canadd()">Agregar</button>
+            <button class="btnGuardarPerfil" type="submit" ng-show="allow()">Guardar</button>
             <button class="btnEditarPerfil" ng-click="deleteUser()">Borrar cuenta</button>
 
             <br>
@@ -39,37 +39,37 @@
 
           <label class="label">Usuario:</label>
             <!--ES EL INPUT PARA EL USUARIO-->
-        <center><input class="datos" type="text" ng-model=user.username></center>
+        <center><input class="datos" type="text" name="edusername" ng-model=user.username readonly="allow()" ng-pattern="/^[a-z0-9]{4,16}$/i"/></center>
            <hr>
              <label class="label">Email:</label>
             <!--ES EL INPUT PARA EL EMAIL-->
-        <center><input class="datos" type="text" ng-model=user.email></center>
+        <center><input class="datos" type="email" name="edemail" ng-model=user.email ></center>
 
 
              <label class="label">Nombre:</label>
             <!--ES EL INPUT PARA EL NOMBRE-->
-        <center><input class="datos" type="text" ng-model=user.firstname></center>
+        <center><input class="datos" type="text" name="edefirstname" ng-model=user.firstname ng-pattern="/^[A-Z]{3,30}$/i"/></center>
 
         <label class="label">Apellido:</label>
        <!--ES EL INPUT PARA EL NOMBRE-->
-       <center><input class="datos" type="text" ng-model=user.lastname></center>
+       <center><input class="datos" type="text" name="edelastname" ng-model=user.lastname ng-pattern="/^[A-Z]{3,30}$/i"/></center>
 
 
         <label class="label">Fecha de Ingreso: </label>
             <!--ES EL INPUT PARA   LA FECHA DE INGRESO-->
-        <center><input class="datos" type="text" ng-model=user.joinDate></center>
+        <center><input class="datos" type="text"  ng-model=user.joinDate readonly></center>
 
 
 
             <label class="label">Ciudad:</label>
             <!--ES EL INPUT PARA LA CIUDAD-->
-        <center><input class="datos" type="text" ng-model=user.CityCityname></center>
+        <center><input class="datos" type="text" ng-model=user.CityCityname readonly></center>
 
 
             <!--ES EL TEXTAREA PARA LA DESCRIPCION-->
             <label class="label">Descripcion</label>
-            <center><textarea class="Textarea" ng-model=user.bio></textarea></center>
-     </div>
+            <center><textarea class="Textarea" name="edbio" ng-model=user.bio ng-pattern="/^[A-Z0-9 _]{10,200}$/i"/></textarea></center>
+     </form>
 
 
 
@@ -87,24 +87,24 @@
           </div>
 
               <div class="amigos"><!--AQUI VAN TODOS LOS AMIGOS-->
-                    <div class="amigoAgregado" ng-repeat="x in friends">
+                    <div class="amigoAgregado">
                         <h5>Amigos Agregados</h5>
-                        <div class="individuoAgregado">
-                            <div class="eliminarAmigo"><button>x</button> </div><!--BOTON PARA ELIMINAR UN AMIGO AGREGADO-->
-                            <div class="nombreAmigo">{{x.firstname}} {{x.lastname}}</div><!--Aca va el nombre de un amigo agregado-->
+                        <div class="individuoAgregado" ng-repeat="x in friends" >
+                            <div class="eliminarAmigo" ng-click=deleteFriend($index)><button>x</button> </div><!--BOTON PARA ELIMINAR UN AMIGO AGREGADO-->
+                            <div class="nombreAmigo">{{x}}</div><!--Aca va el nombre de un amigo agregado-->
                             <div class="fotoAmigo"></div><!--FOTO DE UN AMIGO AGREGADO-->
                         </div>
                     </div>
 
 
-                    <div class="amigoSugerido" ng-repeat="y in candidates">
+                    <div class="amigoSugerido">
                         <h5>Amigos Sugeridos</h5>
-                        <div class="individuoAgregado">
-                            <div class="eliminarAmigo"><button>x</button></div><!--BOTON eliminar amigo sugerido-->
+                        <div class="individuoAgregado" ng-repeat="y in candidates">
+                            <div class="eliminarAmigo" ng-click="rejectUser($index)"><button>x</button></div><!--BOTON eliminar amigo sugerido-->
                             <div>
-                                <button class="btnAmigoNuevo" ng-click="acceptFriend()">Agregar</button><!-- BOTON PARA ACEPTAR SOLICITUD DE AMIGO-->
+                                <button class="btnAmigoNuevo" ng-click="acceptFriend($index)">Agregar</button><!-- BOTON PARA ACEPTAR SOLICITUD DE AMIGO-->
                             </div>
-                            <div class="nombreAmigo">{{y.firstname}} {{y.lastname}}</div><!--Nombre del AMIGO SUGERIDO-->
+                            <div class="nombreAmigo">{{y}}</div><!--Nombre del AMIGO SUGERIDO-->
                              <div class="fotoAmigo"></div><!--FOTO DEL AMIGO SUGERIDO-->
                         </div>
                     </div>

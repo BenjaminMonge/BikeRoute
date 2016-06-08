@@ -19,16 +19,16 @@
             <div class="wrap">
 
               <!--Aqui empieza EL LOGIN-->
-              <form class="login" ng-submit="login()">
+              <form class="login" name="loginForm" ng-submit="login(loginForm.$valid)" novalidate>
                   <h2>Inicia sesión</h2>
                   <!--Este es el input del usuario-->
-              <input type="text" placeholder="&#128104; Usuario" ng-model=user.username>
+              <input type="text" name="logusername" placeholder="&#128104; Usuario" ng-model=user.username required required ng-pattern="/^[a-z0-9]{4,16}$/i"/>
 
                   <!--Este es el input de la contraseña-->
-              <input type="password" placeholder="&#9919; Contraseña" ng-model=user.password>
+              <input type="password" name="logpassword" placeholder="&#9919; Contraseña" ng-model=user.password required ng-pattern="/^[a-z0-9]{6,20}$/i"/>
 
                   <!--Este es  el boton para enviar el formulario-->
-                  <input type="submit" value="Aceptar">
+                  <input type="submit" value="Aceptar" ng-disabled="loginForm.$invalid">
 
                   <!--Esta es la referencia que hace aparecer el POPUP-->
                   <a class="crearCuenta" href="#popup" target="_self">Aun no tienes una cuenta, Creala de INMEDIATO!</a>
@@ -38,27 +38,30 @@
                 <!--inicia EL POPUP DEL SIGN UP-->
                 <div class="modal-wrapper" id="popup">
                   <div class="popup-contenedor">
-                      <form class="formModal" ng-submit="signup()">
+                      <form class="formModal" name="signupForm" ng-submit="signup(signupForm.$valid)" novalidate>
                           <h2 class="modalh2">Crear cuenta</h2>
                           <!--Este es el input para el nombre-->
-                          <input class="nombre" type="text" placeholder="&#128104; Alias" ng-model=member.username>
-
+                          <input class="nombre" type="text" name="username" placeholder="&#128104; Alias" ng-model=member.username required ng-pattern="/^[a-z0-9]{4,16}$/i"/>
+                          <p ng-show="signupForm.username.$invalid && !signupForm.username.$pristine" class="help-block">Formato invalido</p>
                           <!--Este es el input para el nombre-->
-                          <input class="nombre" type="text" placeholder="&#128104; Nombre" ng-model=member.firstname>
-
+                          <input class="nombre" type="text" name="firstname" placeholder="&#128104; Nombre" ng-model=member.firstname required ng-pattern="/^[A-Z]{3,30}$/i"/>
+                          <p ng-show="signupForm.firstname.$invalid && !signupForm.firstname.$pristine" class="help-block">Formato invalido</p>
                           <!--Este es el input para el apellido-->
-                          <input class="nombre" type="text" placeholder="&#128104; Apellido" ng-model=member.lastname>
+                          <input class="nombre" type="text" name="lastname" placeholder="&#128104; Apellido" ng-model=member.lastname required ng-pattern="/^[A-Z]{3,30}$/i"/>
+                          <p ng-show="signupForm.lastname.$invalid && !signupForm.lastname.$pristine" class="help-block">You name is required.</p>
 
                           <!--INPUT PARA EL EMAIL-->
-                          <input type="email" placeholder="&#128231; e-mail" ng-model="member.email">
+                          <input type="email" name="email" placeholder="&#128231; e-mail" ng-model="member.email" required>
+                          <p ng-show="signupForm.email.$invalid && !signupForm.email.$pristine" class="help-block">Enter a valid email.</p>
 
                           <!--Input para la contraseña-->
-                          <input type="password" placeholder="&#9919; Contraseña" ng-model="member.password">
+                          <input type="password" name="password" placeholder="&#9919; Contraseña" ng-model="member.password" ng-pattern="/^[a-z0-9]{6,20}$/i"/>
+                          <p ng-show="signupForm.password.$invalid && !signupForm.password.$pristine" class="help-block">Enter a valid password</p>
                           <!--El boton para enviar el formulario-->
-                          <input type="submit" value="Inicia hoy">
+                          <input type="submit" ng-disabled="signupForm.$invalid" value="Inicia hoy">
 
                        </form>
-                      <a class="popup-cerrar"  href="#" target="_self">X</a>
+                      <a class="popup-cerrar" href="#" target="_self">X</a>
                   </div>
                 </div>
                 <!--finaliza EL POPUP-->

@@ -68,7 +68,7 @@
             <div class="Comentarios">
                 <!--AQUI EMPIEZA TODA LA SECCION DE COMENTARIOS-->
                 <div class="coment" ng-repeat="comment in comments">
-                    <button class="eliminarComentario">x</button>
+                    <button class="eliminarComentario" ng-click="deleteComm()">x</button>
                                   <div class="comentario">
                                       <!--Este es el comentario-->
                                       {{comment.content}}
