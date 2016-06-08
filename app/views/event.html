@@ -26,6 +26,7 @@
             <center><textarea class="Textarea" ng-model="bikeevent.description"></textarea></center>
 
             <button class="participarRuta" ng-click="participate()">Participar</button>
+            <button class="participarRuta" ng-click="deleteEvent()">Borrar esta ruta</button>
 
                 </div>
 
@@ -34,6 +35,7 @@
                      <div class="cards" ng-repeat="participant in participants">
 
                          <div class="fotoParticipante">
+                           <img src={{participant.image}} style="width:250px;height:200px;">
                          <!--AQUI VA LA FOTO DEL PARTICIPANTE-->
                          </div>
                          <div class="Nombre">

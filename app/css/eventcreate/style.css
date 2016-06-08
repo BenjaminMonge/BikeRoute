@@ -1,5 +1,5 @@
 *{
-	
+
 	border: 0;
 	margin: 0;
 	padding: 0;
@@ -8,13 +8,13 @@
 }
 
 #contenedor{
-	/*CONTENEDOR PRINCIPAL*/	
+	/*CONTENEDOR PRINCIPAL*/
 	/*opacity: 0.75;*/
 	height: 950px;
 	width: 1200px;
 	margin-right: auto;
 	margin-left: auto;
-	
+
 }
  #main{
  	/* CONTENEDOR GENERAL DEL MAPA Y EL FORMULARIO*/
@@ -29,10 +29,8 @@
 }
 .descriptionCrearRuta{
     margin-top: 100px;
-    text-align: justify;
-    color: aliceblue;
-    text-shadow: 2px 2px 1px #000;
-
+		font-family: sans-serif;
+    font-size: 20px;
 }
 
 h1{
@@ -40,7 +38,7 @@ h1{
 }
 #main #map{
 	/*CONTENEDOR DEL MAPA*/
-	
+
 	  border: 1px solid #d0d0d0;
 	height: 820px;
 	width: 800px;
@@ -52,7 +50,7 @@ h1{
 }
 #main #right{
 	/*CONTENEDOR COMPLETO DE LA DERECHA */
-	
+
 	height: 840px;
 	width: 380px;
 	float: left;
@@ -77,8 +75,8 @@ h1{
 	width: 380px;
 	float: center;
     /*margin-top: 50px;
-   margin-left: 60px; 
-   
+   margin-left: 60px;
+
     width:75%;
     /*max-width: 250px;*/
     background: rgba(0,0,0,0.7);
@@ -164,7 +162,7 @@ h1{
 
 
     font-size: 20px;
-    
+
 }
 .txt{
     display: block;
@@ -189,9 +187,8 @@ input{
 }
 
 body{
-   
-  background-image: url(../../images/fondo32.jpg);
-    background-repeat: no-repeat;   
-    
-}
 
+  background-image: url(../../images/fondo32.jpg);
+    background-repeat: no-repeat;
+
+}

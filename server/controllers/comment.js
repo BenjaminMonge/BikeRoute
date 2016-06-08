@@ -2,7 +2,7 @@ var models = require('../models');
 
 
 module.exports.create = (req, res) => {
-  console.log(datePosted)
+  console.log(req.body.datePosted);
   var comm = {
     content: req.body.content,
     datePosted: req.body.datePosted,
@@ -10,7 +10,7 @@ module.exports.create = (req, res) => {
     UserUsername: req.user.username
   }
   models.Comment.build(comm).save().then((commsav) =>{
-    res.status(200)
+    res.status(200).send(commsav)
   })
 }
 

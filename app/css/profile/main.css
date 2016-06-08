@@ -2,12 +2,11 @@ body {
     font-family: "Open Sans";
     color: #666666;
     line-height: 1.6;
-    background-image: url(app/images/fondo3.jpg);
+    background-image: url(img/fondo3.jpg);
 }
 
 
 .foto{
-    /*background-image: url(img/perfil.jpg);*/
     background-repeat: no-repeat;
     margin-top:65px;
     width: 250px;

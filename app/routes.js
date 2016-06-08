@@ -2,6 +2,7 @@ var routeProvider
 angular.module('BikeRoute', ['ngRoute', 'ngResource', 'http-auth-interceptor',
 'ngAnimate', 'ngCookies', 'ngMap'])
   .config(($routeProvider, $locationProvider) => {
+
     $routeProvider
     .when('/', {templateUrl: 'app/views/home.html', controller: 'HomeController'})
     .when('/create', {templateUrl: 'app/views/eventcreate.html', controller: 'EventController'})
@@ -12,19 +13,6 @@ angular.module('BikeRoute', ['ngRoute', 'ngResource', 'http-auth-interceptor',
     .otherwise({redirectTo: '/'})
   })
 
-  .run(function ($rootScope, $location, Auth) {
-    $rootScope.$watch('currentUser', function (currentUser) {
-    if (!currentUser && (['' ,'/'].indexOf($location.path()) == -1)){
-        Auth.currUser();
-    }
-  });
-
-  $rootScope.$on('event:auth-loginRequired', function() {
-      $location.path('/');
-      return false;
-    })
-
-    })
 
     .directive('customFileInput', function() {
     return {

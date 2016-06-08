@@ -15,11 +15,15 @@ module.exports.get = (req, res) => {
 }
 
 module.exports.create = (req, res) => {
+  if (req.file) {
+    req.body.evtimage = req.file.path
+  }
   route = {
     type: 'Polygon',
     coordinates: JSON.parse("["+ req.body.path + "]")
   }
   req.body.path = route
+  console.log(req.body.evtimage);
   models.Event.build(req.body).save().then((evtsaved) => {
     evtsaved.setUsers([req.user.username], {created: true})
     res.json(evtsaved.dataValues)
@@ -38,8 +42,9 @@ module.exports.participate = (req, res) => {
 
   module.exports.delete = ((req, res) => {
     models.Event.findById(req.params.eventid).then((eventfound) => {
+      models.Comment.destroy({where: {EventEventid: req.params.eventid}})
       eventfound.destroy()
-      res.status(200)
+      res.status(200).send('done')
     }).catch((error) => {
       res.status(500)
     })
@@ -47,7 +52,6 @@ module.exports.participate = (req, res) => {
 
   module.exports.getall = ((req, res) => {
     models.Event.findAll().then((allevt) => {
-      console.log(allevt);
       res.status(200).send(allevt)
     })
   })
