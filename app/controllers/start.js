@@ -25,7 +25,6 @@ angular.module('BikeRoute')
 
   $scope.loadAll = function () {
    $http.get('/api/getall/').success(function(response){
-     console.log(response);
      $scope.routes = response
      if ($scope.routes) {
        loadRoute($scope.routes[0].path.coordinates[0])
