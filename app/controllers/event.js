@@ -1,9 +1,10 @@
 angular.module('BikeRoute')
  .controller('EventController',
-  function ($scope, Event, $location, $routeParams, NgMap, Comment, $route, Change) {
+  function ($scope, Event, $location, $routeParams, NgMap, Comment, $route, Change, $rootScope) {
         Change.check();
 
-        var actual = null;
+        var canpar = true;
+
         /* All the code for the map to work*/
         //vm = this
         $scope.path = [[]]
@@ -16,6 +17,7 @@ angular.module('BikeRoute')
 
         function loadRoute() {
           var coor = $scope.bikeevent.path.coordinates[0]
+          $scope.center = coor[0]
           for (var i = 0; i < coor.length; i++) {
             $scope.path.push(coor[i])
           }
@@ -34,13 +36,14 @@ angular.module('BikeRoute')
           $scope.route.path = sub
           $scope.route.startDate = new Date()
           var data = $scope.route
+          console.log(data.desc);
           var fd = new FormData();
            for (var key in data) {
                fd.append(key, data[key]);
            }
 
            Event.create({}, fd).$promise.then(function (res) {
-              $location.path('/event/'+res.eventid)
+              $location.path('/event/' + res.eventid)
            })
         }
 
@@ -68,6 +71,13 @@ angular.module('BikeRoute')
             $scope.bikeevent = response.bikeevent
             $scope.participants = response.participants
             $scope.comments = response.comments
+            for (var i = 0; i < $scope.participants.length; i++) {
+              console.log($scope.participants[i].username);
+              if ($scope.participants[i].username === $rootScope.currentUser.username) {
+                canpar=false
+              }
+            }
+
             loadRoute()
           })
         }
@@ -75,6 +85,13 @@ angular.module('BikeRoute')
         $scope.deleteEvent = function () {
           Event.delete({eventid: $routeParams.eventid}, function (res) {
             $location.path('/discover')
+          })
+        }
+
+        $scope.delComm = function (ind) {
+          var idcomm = $scope.comments[ind].id
+          Comment.delete({commid: idcomm}, function (res) {
+            $route.reload()
           })
         }
 

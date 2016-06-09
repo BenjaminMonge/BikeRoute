@@ -1,7 +1,7 @@
 angular.module('BikeRoute')
 .factory('Auth',
   function ($location, $rootScope, Session, User, $cookies) {
-    $rootScope.currentUser = $cookies.get('user') || null
+    $rootScope.currentUser = /*$cookies.get('user') ||*/ null
     //$cookies.remove('user')
 
     return {
@@ -21,6 +21,17 @@ angular.module('BikeRoute')
           return cb(null, err.data);
         });
       },
+
+      logout: function(callback) {
+        var cb = callback || angular.noop;
+        Session.delete(function(res) {
+            $rootScope.currentUser = null;
+            return cb();
+          },
+          function(err) {
+            return cb(err.data);
+          });
+      },
 /* Usan el servicio usuario para crear y modificar el usuario actual*/
       createUser: function(userinfo, callback) {
         var cb = callback || angular.noop;
@@ -36,7 +47,12 @@ angular.module('BikeRoute')
 
       currUser: function() {
         Session.get(function(user) {
-          $rootScope.currentUser = user;
+          if(!user.username){
+            $location.path('/')
+          } else {
+            $rootScope.currentUser = user;
+            //$cookies.put('user', user.username)
+          }
         });
       },
 

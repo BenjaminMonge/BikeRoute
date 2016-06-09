@@ -13,7 +13,6 @@ angular.module('BikeRoute', ['ngRoute', 'ngResource', 'http-auth-interceptor',
     .otherwise({redirectTo: '/'})
   })
 
-
     .directive('customFileInput', function() {
     return {
       restrict: 'EA',

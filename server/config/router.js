@@ -6,7 +6,7 @@ var events = require('../controllers/event')
 var comments = require('../controllers/comment')
 var bodyParser = require('body-parser')
 var multer = require('multer');
-var upload = multer({ dest: 'uploads/' })
+var upload = multer({ dest: 'uploads/userimages' })
 /* Router*/
 module.exports = (app) => {
   app.use(bodyParser.json())

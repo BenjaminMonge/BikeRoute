@@ -15,11 +15,10 @@ module.exports.create = (req, res) => {
 }
 
 module.exports.delete = (req, res) => {
-  var commid = req.params.commid
-  models.findById(commid).then((comm) => {
-    comm.delete().then((rows) => {
-      console.log(rows)
-      res.status(200)
-    })
+  console.log(req.query);
+  var commid = req.query.commid
+  models.Comment.findById(commid).then((comm) => {
+    comm.destroy()
+    res.status(200).send('done')
   })
 }

@@ -22,39 +22,55 @@ module.exports.create = (req, res) => {
 
 module.exports.get = (req, res) => {
   models.User.findById(req.params.username, {include: [models.Event]}).then((userfound) => {
-    userfound.getFriends().then((obj)=>{
-      var friends = {}
-      var candidates = {}
-      for (var i = 0; i < obj.length; i++) {
-        if (obj[i].accepted) {
-          friends[i] = obj[i]
+    models.Friendship.findAll({where: {
+    $or: [
+      {
+        FriendUsername:{$eq: req.params.username}
+      },
+      {
+        UserUsername: {$eq: req.params.username}
+      }
+    ]
+  }}).then((arr) => {
+    var friends = {}
+    var cand = {}
+    var j=0
+    var k=0
+      for (var i = 0; i < arr.length; i++) {
+        if (arr[i].accepted) {
+          if(arr[i].UserUsername !== req.params.username) {friends[j]=arr[i].UserUsername}
+          if(arr[i].FriendUsername !== req.params.username) {friends[j]=arr[i].FriendUsername}
+          j++
         } else {
-          candidates[i] = obj[i]
+          if((arr[i].FriendUsername === req.params.username) & (!arr[i].accepted)){
+            cand[k] = arr[i].UserUsername
+            k++
+          }
         }
       }
 
       response = {
         user: userfound.dataValues,
         friendlist: friends,
-        friendwant: candidates
+        friendwant: cand
       }
+
       res.status(200).send(response)
+
     })
-  }).catch((error) => {
-    res.status(500)
-  })
+ })
 }
 
 module.exports.update = (req, res) => {
   if (req.file) {
     req.body.image = req.file.path
   }
-  models.User.findById(req.user.username, {include: [models.City]}).then((userfound) => {
+  models.User.findById(req.user.username, {include: [models.Event]}).then((userfound) => {
       userfound.update(req.body).then(() => {
-        response = {
+        /*response = {
           user: userfound.dataValues
-        }
-        res.status(200).send(response)
+        }*/
+        res.status(200).send('done')
       })
     }).catch((error) => {
       res.status(500).send(error)
@@ -72,7 +88,7 @@ module.exports.delete = (req, res) => {
       models.Comment.destroy({where: {EventEventid: list}})
       models.Event.destroy({where: {eventid: list}})
     })
-    //userfound.destroy()
+    userfound.destroy()
     res.status(200)
   }).catch((error) => {
     res.status(500).send(error)
@@ -89,20 +105,32 @@ module.exports.add = (req, res) => {
 }
 
 module.exports.agree = (req, res) => {
-  models.User.findById(req.user.username).then((userfound) => {
-    userfound.hasUser([req.body.username]).then((ass) => {
-      ass.update({accepted: true})
-      res.status(200)
+  console.log(req.body.username);
+    models.Friendship.findOne({where: {
+    $and: [
+      {
+        FriendUsername: req.user.username
+      },
+      {
+        UserUsername: req.body.username
+      }
+    ]
+  }}).then((val) => {
+      val.update({accepted: true}).then(() => {
+        res.status(200).send('done')
+      })
     })
-  }).catch((error) => {
+  .catch((error) => {
     res.status(500).send(error)
   })
 }
 
 module.exports.deny = (req, res) => {
-  models.User.findById(req.user.username).then((userfound) => {
-    userfound.removeUser([req.body.username])
-    res.status(200)
+  console.log('body here');
+  console.log(req.query.username);
+  models.Friendship.findOne({where: {UserUsername: req.query.username}}).then((val) => {
+    val.destroy()
+    res.status(200).send('done')
   }).catch((error) => {
     res.status(500).send(error)
   })
